@@ -17,14 +17,14 @@ const reserveSchema = new Schema(
             require: true,
 
         },
-        resevedBy: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
-        reservedProperty: {
-            type: Schema.Types.ObjectId,
-            ref: 'Property',
-        },
+        // resevedBy: {
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'User',
+        // },
+        // reservedProperty: {
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Property',
+        // },
 
     },
     {
