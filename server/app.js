@@ -10,13 +10,13 @@ const app = express();
 
 
 require("./config")(app);
+require('./routes')(app)
 
 const capitalize = require("./utils/capitalize");
 const projectName = "server";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
-require('./routes')(app)
 
 
 require("./error-handling")(app);
