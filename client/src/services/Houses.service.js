@@ -1,28 +1,28 @@
 import axios from 'axios'
 
-class HouseService {
+class PropertiesService {
 
     constructor() {
 
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/coasters`
+            baseURL: `${process.env.REACT_APP_API_URL}/properties`
         })
     }
 
 
-    getHouses() {
-        return this.api.get('/getAllHouses')
+    getProperties() {
+        return this.api.get('/getAllProperties')
     }
 
-    getOneHouse(coaster_id) {
-        return this.api.get(`/getOneHouse/${coaster_id}`)
+    getOneProperty(property_id) {
+        return this.api.get(`/getOneProperty/${property_id}`)
     }
 
-    saveHouse(coasterData) {
-        return this.api.post('/saveHouse', coasterData)
+    saveProperty(propertyData) {
+        return this.api.post('/saveProperty', propertyData)
     }
 }
 
-const coastersService = new CoasterService()
+const propertiesService = new PropertiesService()
 
-export default HouseService
+export default propertiesService

@@ -21,26 +21,29 @@ const Navigation = () => {
                     >
 
                         <Link to="/hotels">
-                            <Nav.Link as='div'>Hotels</Nav.Link>
+                            <Nav.Link as='div'>Hoteles</Nav.Link>
                         </Link>
                         <Link to="/houses">
-                            <Nav.Link as="div">Houses</Nav.Link>
+                            <Nav.Link as="div">Apartamentos</Nav.Link>
+                        </Link>
+                        <Link to="/create-propety">
+                            <Nav.Link as="div">Crear nuevo alojamiento</Nav.Link>
                         </Link>
                         <Link to="/perfil">
                             <Nav.Link as="div">Perfil</Nav.Link>
                         </Link>
                     </Nav>
                     <Form className="d-flex me-5">
-                        <NavDropdown title="Init Sesion" id="navbarScrollingDropdown">
+                        <NavDropdown title="Mi cuenta" id="navbarScrollingDropdown">
                             <Link to="/acceder">
-                                <NavDropdown.Item as="div">Log In</NavDropdown.Item>
+                                <NavDropdown.Item as="div">Iniciar sesión</NavDropdown.Item>
                             </Link>
                             <Link to="/logOut">
-                                <NavDropdown.Item as="div">Log Out</NavDropdown.Item>
+                                <NavDropdown.Item as="div">Cerrar sesión</NavDropdown.Item>
                             </Link>
                             <NavDropdown.Divider />
                             <Link to="/registro">
-                                <NavDropdown.Item as="div">Sign Up</NavDropdown.Item>
+                                <NavDropdown.Item as="div">Registrarse</NavDropdown.Item>
                             </Link>
                         </NavDropdown>
                     </Form>

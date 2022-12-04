@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import HousesListPage from '../pages/HousesListPage/HousesListPage'
+import NewCoasterPage from "../pages/NewCoasterPage/NewCoasterPage";
 import SignUp from "../pages/SignUp/SignUp"
 
 
@@ -7,6 +8,7 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<p>Inicio</p>} />
+            <Route path="/create-propety" element={<NewCoasterPage />} />
             <Route path="/houses" element={<HousesListPage />} />
             <Route path="/detalles/:houses_id" element={<p>detalles casa</p>} />
             <Route path="/hotels" element={<p>hoteles</p>} />

@@ -8,7 +8,6 @@ const Footer = () => {
         <Row>
           <Col xs={12} md={6} lg={3}>
             <h3 className='footerTitle'>Ayuda</h3>
-
             <ul className='footerUl'>
               <li><Link to="#" className='footerlinks'>Ayuda</Link></li>
               <li><Link to="#" className='footerlinks'>Mis reservas</Link></li>
