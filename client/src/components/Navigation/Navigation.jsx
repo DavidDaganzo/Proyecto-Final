@@ -10,7 +10,8 @@ const Navigation = () => {
         <Navbar bg="light" expand="lg" >
             <Container fluid>
                 <Link to='/'>
-                    <Navbar.Brand as="div"> <img src='../../logo.png' height={'50'} width={'50'} /></Navbar.Brand>
+                    <Navbar.Brand as="div"> <img src='../../logo.png' height={'50'} width={'50'} alt=
+                        'Cura Reserve' /></Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
