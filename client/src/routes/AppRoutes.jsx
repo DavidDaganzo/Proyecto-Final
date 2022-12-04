@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import HousesListPage from '../pages/HousesListPage/HousesListPage'
 import SignUp from "../pages/SignUp/SignUp"
-
+import LogIn from "../pages/LogIn/LogIn"
 
 const AppRoutes = () => {
     return (
@@ -12,7 +12,7 @@ const AppRoutes = () => {
             <Route path="/hotels" element={<p>hoteles</p>} />
             <Route path="/detalles/:hotels_id" element={<p>detalles hotel</p>} />
             <Route path="/registro" element={<SignUp />} />
-            <Route path="/acceder" element={<p>acceder</p>} />
+            <Route path="/acceder" element={<LogIn />} />
             <Route path="/perfil" element={<p>perfil</p>} />
             <Route path="/*" element={<h1>404</h1>} />
         </Routes>

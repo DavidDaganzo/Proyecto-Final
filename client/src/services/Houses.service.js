@@ -5,7 +5,7 @@ class HouseService {
     constructor() {
 
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/coasters`
+            baseURL: `${process.env.REACT_APP_API_URL}/Houses`
         })
     }
 
