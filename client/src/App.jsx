@@ -1,9 +1,10 @@
-
 import './App.css';
 
 const App = () => {
   return (
-    <h1>Funciona</h1>
+    <div className='App'>
+      <h1>No Arriesgo</h1>
+    </div>
   );
 }
 

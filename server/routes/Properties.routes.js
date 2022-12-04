@@ -5,7 +5,7 @@ router.get("/getAllProperties", (req, res) => {
 
   Property
     .find()
-    .select({ title: 1, imageUrl: [] })
+    .select({ name: 1, image: 1, capacity: 1, price: 1 })
     .then(response => setTimeout(() => res.json(response), 1000))
     .catch(err => res.status(500).json(err))
 })
