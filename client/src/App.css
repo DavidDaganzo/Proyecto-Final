@@ -1,4 +1,7 @@
 .App {
   font-family: 'Roboto', sans-serif;
-  font-family: 'Rubik Distressed', cursive;
+}
+
+a {
+  text-decoration: none !important;
 }
