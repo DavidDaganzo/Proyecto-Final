@@ -1,13 +1,53 @@
 import React from 'react'
 import { Form, Button, Row, Col } from "react-bootstrap"
+import propertiesService from "../../services/Properties.service"
+
+
+
+
 const NewPropertyForm = () => {
+
+
+  const [propertyData, setPropertyData] = useState({
+    name: '',
+    capacity: 0,
+    location: [],
+    image: '',
+    description: '',
+    city: '',
+    price: '',
+    category: '',
+    extras: {},
+  })
+
+  const handleInputChange = e => {
+    const { name, value } = e.target
+    setPropertyData({ ...propertyData, [name]: value })
+  }
+
+  const handleFormSubmit = e => {
+    e.preventDefault()
+
+    propertiesService
+      .saveProperty(propertyData)
+      .then(() => {
+        navigate('/')
+      })
+      .catch(err => console.error(err))
+  }
+
+  const { name, capacity, location, image, description, city, price, category, extras } = propertyData
+
+
+
+
   return (
     <>
       <h1>Crear nuevo alojamiento</h1>
       <Form onSubmit={handleFormSubmit}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Nombre</Form.Label>
-          <Form.Control type="text" value={title} onChange={handleInputChange} name="title" />
+          <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
         </Form.Group>
 
 
