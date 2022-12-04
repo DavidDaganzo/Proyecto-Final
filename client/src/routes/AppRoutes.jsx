@@ -3,11 +3,13 @@ import HousesListPage from '../pages/HousesListPage/HousesListPage'
 import NewCoasterPage from "../pages/NewCoasterPage/NewCoasterPage";
 import SignUp from "../pages/SignUp/SignUp"
 import LogIn from "../pages/LogIn/LogIn"
+import HomePage from "../pages/HomePage/HomePage";
+
 
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<p>Inicio</p>} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/create-propety" element={<NewCoasterPage />} />
             <Route path="/houses" element={<HousesListPage />} />
             <Route path="/detalles/:houses_id" element={<p>detalles casa</p>} />

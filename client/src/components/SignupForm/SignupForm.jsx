@@ -8,7 +8,8 @@ const SignupForm = () => {
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        profileImg: ''
     })
 
     const handleInputChange = e => {
@@ -34,7 +35,7 @@ const SignupForm = () => {
 
 
 
-    const { username, password, email } = signupData
+    const { username, password, email, profileImg } = signupData
 
     return (
 
@@ -56,6 +57,17 @@ const SignupForm = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
+
+            {/* <Form.Group className=" mb-3">
+                <Form.Label>Imagen</Form.Label>
+                <Form.Control
+                    type="file"
+                    name="profileImg"
+                    value={profileImg}
+                    onChange={handleInputChange}
+
+                />
+            </Form.Group> */}
 
 
             <div className="d-grid">
