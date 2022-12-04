@@ -6,7 +6,6 @@ HTTP | PATH | DESCRIPTION | JSON
 ------ | ------ | ------ |  ------
 GET    | /   |  Index Page |  NO
 GET   | /hotels/list   |  Hotels List |  NO
-GET   | /houses/list  |  House list |  NO
 GET   | /house/create   |  Create House from render |  NO
 POST  | /house/create   |  Create House from handler  |  NO
 GET   | /house/list/:id   |  House details  |  NO

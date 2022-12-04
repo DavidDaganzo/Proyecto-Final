@@ -1,4 +1,7 @@
 .App {
-  font-family: 'Noto Sans Chakma', sans-serif;
   font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none !important;
 }

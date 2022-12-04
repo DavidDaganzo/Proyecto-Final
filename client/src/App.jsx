@@ -1,9 +1,17 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import Navigation from './components/Navigation/Navigation';
+import AppRoutes from './routes/AppRoutes';
+
+
 
 const App = () => {
   return (
     <div className='App'>
-      <h1>No Arriesgo</h1>
+      <Navigation />
+      <AppRoutes />
+
+
     </div>
   );
 }
