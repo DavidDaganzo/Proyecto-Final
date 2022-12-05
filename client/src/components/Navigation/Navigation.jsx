@@ -24,7 +24,7 @@ const Navigation = () => {
                         <Link to="/hotels">
                             <Nav.Link as='div'>Hoteles</Nav.Link>
                         </Link>
-                        <Link to="/houses">
+                        <Link to="/properties">
                             <Nav.Link as="div">Apartamentos</Nav.Link>
                         </Link>
                         <Link to="/create-propety">

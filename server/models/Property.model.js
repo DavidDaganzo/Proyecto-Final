@@ -14,10 +14,14 @@ const propertySchema = new Schema(
             trim: true
         },
         location: {
-            type: {
-                type: String
+            lat: {
+                type: Number,
+                required: true,
             },
-            coordinates: [Number]
+            lng: {
+                type: Number,
+                required: true,
+            },
         },
         image: {
             type: [String]
@@ -41,14 +45,14 @@ const propertySchema = new Schema(
         },
         category: {
             type: String,
-            enum: ['House', 'Hotel', 'Villas', 'Capsule-Hotel'],
+            enum: ['House', 'Hotel', 'Villa', 'Capsule-Hotel'],
             default: 'House'
         },
         extras: {
             pool: {
                 type: Boolean
             },
-            Barbaque: {
+            barbaque: {
                 type: Boolean
             },
             terrace: {
