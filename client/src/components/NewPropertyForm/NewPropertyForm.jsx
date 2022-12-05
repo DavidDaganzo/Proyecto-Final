@@ -13,7 +13,7 @@ const NewPropertyForm = () => {
     name: '',
     capacity: 0,
     lat: 0, lng: 0,
-    image: '',
+    image: [''],
     description: '',
     city: '',
     price: '',
@@ -42,7 +42,7 @@ const NewPropertyForm = () => {
     propertiesService
       .saveProperty(propertyData)
       .then(() => {
-        navigate('/properties')
+        navigate('/')
       })
       .catch(err => console.error(err))
   }
@@ -119,11 +119,6 @@ const NewPropertyForm = () => {
           <Row>
             <Col>
 
-              <Form.Group className="mb-3" controlId="image">
-                <Form.Label>Imagen</Form.Label>
-                <Form.Control type="text" value={image} onChange={handleInputChange} name="image" />
-              </Form.Group>
-              {/* 
               <Form.Group className=" mb-3" >
                 <Form.Label>Imagen</Form.Label>
                 <Form.Control
@@ -134,7 +129,7 @@ const NewPropertyForm = () => {
                   onChange={handleInputChange}
 
                 />
-              </Form.Group> */}
+              </Form.Group>
 
             </Col>
             <Col>
