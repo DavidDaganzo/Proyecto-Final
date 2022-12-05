@@ -1,12 +1,12 @@
 import React from 'react'
 import NewCoasterForm from '../../components/NewPropertyForm/NewPropertyForm'
 
-const NewCoasterPage = () => {
+const NewPropertiesPage = () => {
   return (
     <div>
-      <NewCoasterForm />
+      <NewPropertyForm />
     </div>
   )
 }
 
-export default NewCoasterPage
+export default NewPropertiesPage
