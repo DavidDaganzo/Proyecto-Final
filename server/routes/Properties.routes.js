@@ -30,7 +30,7 @@ router.post("/saveProperty", (req, res) => {
     coordinates: [lat, lng]
   }
   Property
-    .create(name, capacity, location, image, description, city, price, category, extras = { pool, barbaque, terrace, wifi, airconditioning })
+    .create(req.body)
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 })

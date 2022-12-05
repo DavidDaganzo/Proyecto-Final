@@ -12,12 +12,12 @@ const NewPropertyForm = () => {
   const [propertyData, setPropertyData] = useState({
     name: '',
     capacity: 0,
+    category: '',
     lat: 0, lng: 0,
     image: '',
     description: '',
     city: '',
     price: '',
-    category: '',
     extras: { pool: null, barbaque: null, terrace: null, wifi: null, airconditioning: null }
   })
 
@@ -48,9 +48,6 @@ const NewPropertyForm = () => {
   }
 
   const { name, capacity, lat, lng, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = propertyData
-
-
-
 
   return (
     <>
@@ -187,7 +184,6 @@ const NewPropertyForm = () => {
 
             </Col>
           </Row>
-
 
           <div className="d-grid mb-5">
             <Button variant="dark" type="submit">Crear Casa</Button>
