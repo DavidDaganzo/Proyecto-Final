@@ -13,7 +13,7 @@ const NewPropertyForm = () => {
     name: '',
     capacity: 0,
     lat: 0, lng: 0,
-    image: [''],
+    image: '',
     description: '',
     city: '',
     price: '',
@@ -38,11 +38,10 @@ const NewPropertyForm = () => {
   const handleFormSubmit = e => {
     e.preventDefault()
 
-    console.log(propertyData)
     propertiesService
       .saveProperty(propertyData)
       .then(() => {
-        navigate('/')
+        navigate('/properties')
       })
       .catch(err => console.error(err))
   }
@@ -69,7 +68,7 @@ const NewPropertyForm = () => {
 
           <Row>
             <Col>
-              <Form.Select className="mb-3" aria-label="category" name='category'>
+              <Form.Select className="mb-3" aria-label="category" name='category' onChange={handleInputChange}>
                 <option>Categoría</option>
                 <option value="House">Apartamento</option>
                 <option value="Hotel">Hotel</option>
@@ -119,6 +118,11 @@ const NewPropertyForm = () => {
           <Row>
             <Col>
 
+              <Form.Group className="mb-3" controlId="image">
+                <Form.Label>Imagen</Form.Label>
+                <Form.Control type="text" value={image} onChange={handleInputChange} name="image" />
+              </Form.Group>
+              {/* 
               <Form.Group className=" mb-3" >
                 <Form.Label>Imagen</Form.Label>
                 <Form.Control
@@ -129,7 +133,7 @@ const NewPropertyForm = () => {
                   onChange={handleInputChange}
 
                 />
-              </Form.Group>
+              </Form.Group> */}
 
             </Col>
             <Col>
