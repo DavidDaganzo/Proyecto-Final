@@ -38,7 +38,7 @@ const NewPropertyForm = () => {
   const handleFormSubmit = e => {
     e.preventDefault()
 
-    console.log(propertyData)
+
     propertiesService
       .saveProperty(propertyData)
       .then(() => {
@@ -69,7 +69,7 @@ const NewPropertyForm = () => {
 
           <Row>
             <Col>
-              <Form.Select className="mb-3" aria-label="category" name='category'>
+              <Form.Select className="mb-3" aria-label="category" name='category' onChange={handleInputChange}>
                 <option>Categoría</option>
                 <option value="House">Apartamento</option>
                 <option value="Hotel">Hotel</option>
