@@ -18,13 +18,18 @@ const NewPropertyForm = () => {
     city: '',
     price: '',
     category: '',
-    extras: { pool: '', barbaque: '', terrace: '', wifi: '', airconditioning: '' }
+    extras: { pool: null, barbaque: null, terrace: null, wifi: null, airconditioning: null }
   })
 
   const handleInputChange = e => {
     const { name, value } = e.target
     setPropertyData({ ...propertyData, [name]: value })
   }
+  const handleSwitchChange = e => {
+    const { name, checked } = e.target
+    setPropertyData({ ...propertyData, [name]: checked })
+  }
+
 
   const navigate = useNavigate()
 
@@ -134,48 +139,50 @@ const NewPropertyForm = () => {
 
 
 
-          {/* <Row>
+          <Row>
             <Col>
 
-              <Form.Select className="mb-3" aria-label="pool" name='pool'>
-                <option>piscina</option>
-                <option value="true">Tiene</option>
-                <option value="false">No tiene</option>
-              </Form.Select >
+              <Form.Check onChange={handleSwitchChange}
+                name="pool"
+                type="switch"
+                id="custom-switch"
+                label="Piscina"
+              />
 
-              <Form.Select className="mb-3" aria-label="barbaque" name='barbaque'>
-                <option>Barbacoa</option>
-                <option value="true">Tiene</option>
-                <option value="false">No tiene</option>
-              </Form.Select>
+              <Form.Check onChange={handleSwitchChange}
+                name="barbaque"
+                type="switch"
+                id="custom-switch"
+                label="Barbacoa"
+              />
 
-              <Form.Select className="mb-3" aria-label="terrace" name='terrace'>
-                <option>Terraza</option>
-                <option value="true">Tiene</option>
-                <option value="false">No tiene</option>
-              </Form.Select  >
+              <Form.Check onChange={handleSwitchChange}
+                name="terrace"
+                type="switch"
+                id="custom-switch"
+                label="Terraza"
+              />
 
-              <Form.Select className="mb-3" aria-label="wifi" name='wifi'>
-                <option>Conexion Wifi</option>
-                <option value="true">Tiene</option>
-                <option value="false">No tiene</option>
-              </Form.Select>
+              <Form.Check onChange={handleSwitchChange}
+                name="wifi"
+                type="switch"
+                id="custom-switch"
+                label="Wifi"
+              />
 
-              {['checkbox'].map((type) => (
-                <div key={`pool-${type}`} className="mb-3">
-                  <Form.Check
-                    type={type}
-                    id={`pool-${type}`}
-                    label={`pool ${type}`}
-                  />
-                </div>
-              ))}
+              <Form.Check onChange={handleSwitchChange}
+                name="airconditioning"
+                type="switch"
+                id="custom-switch"
+                label="Aire acondicionado"
+              />
+
             </Col>
-          </Row> */}
+          </Row>
 
 
           <div className="d-grid mb-5">
-            <Button variant="dark" type="submit">Crear montaña rusa</Button>
+            <Button variant="dark" type="submit">Crear Casa</Button>
           </div>
 
         </Form>

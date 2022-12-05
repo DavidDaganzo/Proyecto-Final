@@ -14,14 +14,11 @@ const propertySchema = new Schema(
             trim: true
         },
         location: {
-            lat: {
-                type: Number,
-                required: true,
+            type: {
+                type: String
             },
-            lng: {
-                type: Number,
-                required: true,
-            },
+            coordinates: [Number]
+
         },
         image: {
             type: [String]
@@ -76,5 +73,6 @@ const propertySchema = new Schema(
 );
 
 
+propertySchema.index({ location: '2dsphere' })
 
 module.exports = model('Property', propertySchema)
