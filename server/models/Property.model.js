@@ -20,7 +20,7 @@ const propertySchema = new Schema(
             coordinates: [Number]
         },
         image: {
-            type: String
+            type: [String]
         },
         description: {
             type: String,
