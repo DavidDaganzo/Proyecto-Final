@@ -21,8 +21,7 @@ const propertySchema = new Schema(
 
         },
         image: {
-            type: String,
-            default: 'http://crismhom.org/wp-content/uploads/2014/07/desafios-generales-en-diseno-de-una-casa.jpg'
+            type: [String]
         },
         description: {
             type: String,
