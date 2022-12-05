@@ -12,7 +12,7 @@ const NewPropertyForm = () => {
   const [propertyData, setPropertyData] = useState({
     name: '',
     capacity: 0,
-    location: { lat: '', lng: '' },
+    lat: 0, lng: 0,
     image: [''],
     description: '',
     city: '',
@@ -27,7 +27,9 @@ const NewPropertyForm = () => {
   }
   const handleSwitchChange = e => {
     const { name, checked } = e.target
-    setPropertyData({ ...propertyData, [name]: checked })
+    setPropertyData({ ...propertyData, extras: { ...propertyData.extras, [name]: checked } }
+    )
+    console.log(propertyData)
   }
 
 
@@ -36,6 +38,7 @@ const NewPropertyForm = () => {
   const handleFormSubmit = e => {
     e.preventDefault()
 
+    console.log(propertyData)
     propertiesService
       .saveProperty(propertyData)
       .then(() => {
@@ -44,7 +47,7 @@ const NewPropertyForm = () => {
       .catch(err => console.error(err))
   }
 
-  const { name, capacity, location: { lat, lng }, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = propertyData
+  const { name, capacity, lat, lng, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = propertyData
 
 
 
