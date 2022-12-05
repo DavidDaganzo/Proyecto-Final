@@ -30,4 +30,29 @@ router.post("/saveProperty", (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
+
+
+router.post('/edit/:property_id', (req, res) => {
+
+  const { property_id } = req.params
+  const { name, capacity, location: { lat, lng }, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = req.body
+
+
+  Property
+    .findByIdAndUpdate(property_id, req.body)
+    .then(response => res.json(response))
+    .catch(err => console.log(err))
+})
+
+router.post('/delete/property_id/', (req, res) => {
+
+  const { property_id } = req.params
+
+  Property
+    .findByIdAndDelete(property_id)
+    .then(response => res.json(response))
+    .catch(err => console.log(err))
+
+})
+
 module.exports = router

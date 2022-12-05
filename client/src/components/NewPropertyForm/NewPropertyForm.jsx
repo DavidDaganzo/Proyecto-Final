@@ -73,19 +73,19 @@ const NewPropertyForm = () => {
 
           <Row>
             <Col>
-              <Form.Group className="mb-3" controlId="inv">
+              <Form.Group className="mb-3" controlId="capacity">
                 <Form.Label>Capacidad </Form.Label>
                 <Form.Control type="number" value={capacity} onChange={handleInputChange} name="capacity" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className="mb-3" controlId="image">
+              <Form.Group className="mb-3" controlId="city">
                 <Form.Label>Ciudad</Form.Label>
                 <Form.Control type="text" value={city} onChange={handleInputChange} name="city" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className="mb-3" controlId="inv">
+              <Form.Group className="mb-3" controlId="price">
                 <Form.Label>Precio</Form.Label>
                 <Form.Control type="number" value={price} onChange={handleInputChange} name="price" />
               </Form.Group>
@@ -94,13 +94,13 @@ const NewPropertyForm = () => {
 
           <Row>
             <Col>
-              <Form.Group className="mb-3" controlId="len">
+              <Form.Group className="mb-3" controlId="lat">
                 <Form.Label>Latitud</Form.Label>
                 <Form.Control type="number" value={lat} onChange={handleInputChange} name="lat" />
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className="mb-3" controlId="len">
+              <Form.Group className="mb-3" controlId="lng">
                 <Form.Label>Longitud</Form.Label>
                 <Form.Control type="number" value={lng} onChange={handleInputChange} name="lng" />
               </Form.Group>
@@ -116,7 +116,7 @@ const NewPropertyForm = () => {
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group className="mb-3" controlId="image">
+              <Form.Group className="mb-3" controlId="description">
                 <Form.Label>Descripcion</Form.Label>
                 <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
               </Form.Group>
@@ -125,7 +125,7 @@ const NewPropertyForm = () => {
 
 
 
-          <Row>
+          {/* <Row>
             <Col>
 
               <Form.Select className="mb-3" aria-label="pool" name='pool'>
@@ -158,7 +158,7 @@ const NewPropertyForm = () => {
                 <option value="false">No tiene</option>
               </Form.Select>
             </Col>
-          </Row>
+          </Row> */}
 
 
           <div className="d-grid mb-5">

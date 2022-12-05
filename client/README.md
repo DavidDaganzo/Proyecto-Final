@@ -2,35 +2,25 @@
 <hr>
 <br>
 
-HTTP | PATH | DESCRIPTION | JSON
+HTTP | PATH | DESCRIPTION | PROTECTED
 ------ | ------ | ------ |  ------
 GET    | /   |  Index Page |  NO
 GET   | /hotels/list   |  Hotels List |  NO
-GET   | /houses/list  |  House list |  NO
-GET   | /house/create   |  Create House from render |  NO
-POST  | /house/create   |  Create House from handler  |  NO
-GET   | /house/list/:id   |  House details  |  NO
-GET   | /house/:id/edit  |  Edit House from render |  NO
-POST  | /house/:id/edit  |  Edit House from handler |  NO
-POST  | /house/:id/delete  |  Delete House |  NO
-GET   | /hotels/create   |  Create Hotel form render  |  NO
-POST  | /hotels/create   |  Create Hotel from handler  |  NO
-GET   | /hotels/list/:id   |  Hotel Details  |  NO
-GET   | /hotels/:id/edit  |  Edit Hotel from render |  NO
-POST  | /hotels/:id/edit  |  Edit Hotel from handler |  NO
-POST  | /hotels/:id/delete  |  Delete Hotel |  NO
+GET   | /hotels/details/:id   |  Hotel Details  |  NO
+GET   | /properties/list  |  Property list |  NO
+GET   | /property/create   |  Create Property from render | ✅
+GET   | /property/details/:id   |  Property details  |  NO
+GET   | /property/edit/:id |  Edit Property from render |  ✅
+
 
 <br>
 <hr>
 
-HTTP | PATH | DESCRIPTION | JSON
+HTTP | PATH | DESCRIPTION | PROTECTED
 ------ | ------ | ------ |  ------
-GET   | /user/:id  |  Profile  |  NO
-GET   | /creator/:id  |  Profile  |  NO
-GET   | /admin/:id  |  Profile  |  NO
+GET   | /signup  |  Sign up  |  NO
+GET   | /login  |  Log in |  NO
+GET   | /logout  |  Log out |  NO
+GET   | /user/:id  |  Profile details |  ✅
 <hr>
 <br>
-
-HTTP | PATH | DESCRIPTION | JSON
------- | ------ | ------ |  ------
-GET   | /api/places |  places  |  ✅
