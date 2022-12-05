@@ -13,7 +13,7 @@ const NewPropertyForm = () => {
     name: '',
     capacity: 0,
     location: { lat: '', lng: '' },
-    image: '',
+    image: [''],
     description: '',
     city: '',
     price: '',
@@ -110,10 +110,19 @@ const NewPropertyForm = () => {
 
           <Row>
             <Col>
-              <Form.Group className="mb-3" controlId="image">
-                <Form.Label>Imagen (URL)</Form.Label>
-                <Form.Control type="text" value={image} onChange={handleInputChange} name="image" />
+
+              <Form.Group className=" mb-3" >
+                <Form.Label>Imagen</Form.Label>
+                <Form.Control
+                  type="file"
+                  multiple
+                  name="image"
+                  value={image}
+                  onChange={handleInputChange}
+
+                />
               </Form.Group>
+
             </Col>
             <Col>
               <Form.Group className="mb-3" controlId="image">
@@ -152,11 +161,15 @@ const NewPropertyForm = () => {
                 <option value="false">No tiene</option>
               </Form.Select>
 
-              <Form.Select className="mb-3" aria-label="airconditioning" name='airconditioning'>
-                <option>Aire acondicionado</option>
-                <option value="true">Tiene</option>
-                <option value="false">No tiene</option>
-              </Form.Select>
+              {['checkbox'].map((type) => (
+                <div key={`pool-${type}`} className="mb-3">
+                  <Form.Check
+                    type={type}
+                    id={`pool-${type}`}
+                    label={`pool ${type}`}
+                  />
+                </div>
+              ))}
             </Col>
           </Row>
 
