@@ -1,11 +1,11 @@
 import { Col, Row } from "react-bootstrap"
 import PropertyCard from "../PropertyCard/PropertyCard"
 
-const PropertyList = ({ property }) => {
+const PropertyList = ({ properties }) => {
 
   return (
     <Row>
-      {property.map(elm => {
+      {properties.map(elm => {
         return (
           <Col sm={{ span: 4 }} key={elm._id} >
             <PropertyCard {...elm} />

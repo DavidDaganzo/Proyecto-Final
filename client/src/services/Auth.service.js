@@ -18,7 +18,6 @@ class AuthService {
     }
 
     verify = token => {
-        console.log({ token })
         return this.api.get('/verify', { headers: { Authorization: `Bearer ${token}` } })
     }
 }
