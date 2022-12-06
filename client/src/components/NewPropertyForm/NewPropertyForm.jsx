@@ -151,6 +151,7 @@ const NewPropertyForm = () => {
           <Row>
             <Col>
 
+
               <Form.Check onChange={handleSwitchChange}
                 name="pool"
                 type="switch"

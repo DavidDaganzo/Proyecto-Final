@@ -2,14 +2,16 @@ import './PropertyCard.css'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
+import MyCarousel from './MyCarousel';
 
-function PropertyCard({ name, image, price, _id }) {
+function PropertyCard({ name, price, _id }) {
   return (
-    <Card className="mb-4 PropertyCard">
-      <Card.Img variant="top" src={image} />
+
+    <Card style={{ width: '18rem' }}>
+      <MyCarousel />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Text>{price} €/noche</Card.Text>
+        <Card.Text> {price} €/noche </Card.Text>
         <Link to={`/detalles/${_id}`}>
           <div className="d-grid">
             <Button variant="dark" size="sm">Ver detalles</Button>

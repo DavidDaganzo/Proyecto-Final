@@ -33,8 +33,8 @@ const Footer = () => {
           <Col xs={12} md={6} lg={3}>
             <h3 className='footerTitle'>Github</h3>
             <ul className='footerUl'>
-              <li><a className='footerlinks' href="">David Daganzo</a></li>
-              <li><a className='footerlinks' href="">David Muñoz</a></li>
+              <li><a className='footerlinks' href="https://github.com/J2PQ">David Daganzo</a></li>
+              <li><a className='footerlinks' href="https://github.com/davidmunoz626">David Muñoz</a></li>
             </ul>
           </Col>
         </Row>
