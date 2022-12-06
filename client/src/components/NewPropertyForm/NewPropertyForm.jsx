@@ -3,6 +3,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap"
 import propertiesService from "../../services/Properties.service"
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react"
+import uploadServices from '../../services/upload.service'
 
 const NewPropertyForm = () => {
 
@@ -18,6 +19,8 @@ const NewPropertyForm = () => {
     extras: { pool: null, barbaque: null, terrace: null, wifi: null, airconditioning: null }
   })
 
+  const [loadingImage, setLoadingImage] = useState(false)
+
   const handleInputChange = e => {
     const { name, value } = e.target
     setPropertyData({ ...propertyData, [name]: value })
@@ -31,6 +34,22 @@ const NewPropertyForm = () => {
 
 
   const navigate = useNavigate()
+
+  const handleFileChange = e => {
+
+    setLoadingImage(true)
+
+    const formData = new FormData()
+    formData.append('imageData', e.target.files[0])
+    uploadServices
+      .uploadimage(formData)
+      .then(res => {
+        setPropertyData({ ...propertyData, image: res.data.cloudinary_url })
+        setLoadingImage(false)
+      })
+      .catch(err => console.log(err))
+  }
+
 
   const handleFormSubmit = e => {
     e.preventDefault()
@@ -115,20 +134,8 @@ const NewPropertyForm = () => {
 
               <Form.Group className="mb-3" controlId="image">
                 <Form.Label>Imagen</Form.Label>
-                <Form.Control type="text" value={image} onChange={handleInputChange} name="image" />
+                <Form.Control type="file" onChange={handleFileChange} />
               </Form.Group>
-              {/* 
-              <Form.Group className=" mb-3" >
-                <Form.Label>Imagen</Form.Label>
-                <Form.Control
-                  type="file"
-                  multiple
-                  name="image"
-                  value={image}
-                  onChange={handleInputChange}
-
-                />
-              </Form.Group> */}
 
             </Col>
             <Col>
@@ -183,7 +190,7 @@ const NewPropertyForm = () => {
           </Row>
 
           <div className="d-grid mb-5">
-            <Button variant="dark" type="submit">Crear Casa</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>
           </div>
 
         </Form>
