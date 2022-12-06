@@ -48,7 +48,7 @@ router.post('/edit/:property_id', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.post('/delete/property_id/', (req, res) => {
+router.post('/delete/:property_id', (req, res) => {
 
   const { property_id } = req.params
 

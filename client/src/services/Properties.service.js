@@ -21,6 +21,11 @@ class PropertiesService {
     saveProperty(propertyData) {
         return this.api.post('/saveProperty', propertyData)
     }
+
+    delete(property_id) {
+        return this.api.post(`/delete/${property_id}`)
+    }
+
 }
 
 const propertiesService = new PropertiesService()
