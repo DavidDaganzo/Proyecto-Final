@@ -3,20 +3,26 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import propertiesService from "../../services/Properties.service"
 
-
 const PropertyDetailsPage = () => {
 
     const [properties, setProperties] = useState()
-
     const { property_id } = useParams()
 
+
     useEffect(() => {
-        console.log(property_id)
         propertiesService
             .getOneProperty(property_id)
             .then(({ data }) => setProperties(data))
             .catch(err => console.error(err))
     }, [])
+
+    const deleteProperty = () => {
+        propertiesService
+            .delete(property_id)
+            .then(({ data }) => setProperties(data))
+            .catch(err => console.error(err))
+    }
+
 
 
 
@@ -43,16 +49,17 @@ const PropertyDetailsPage = () => {
                                 <h3>Especificaciones</h3>
                                 <p>{properties.description}</p>
                                 <ul>
-                                    <li>Capacidad: {properties.capacity}</li>
+                                    <li>Capacidad: {properties.capacity} personas</li>
                                     <li>Precio por noche: {properties.price}€</li>
+
                                 </ul>
                                 <hr />
 
                                 <Link to="/properties">
-                                    <Button as="div" variant="dark">Volver a la Lista</Button>
+                                    <Button as="div" variant="outline-dark" className='me-2'>Volver a la Lista</Button>
                                 </Link>
                                 <Link to="/properties">
-                                    <Button variant="outline-danger">Eliminar</Button>
+                                    <Button variant="outline-danger" onClick={deleteProperty}>Eliminar</Button>
                                 </Link>
                             </Col>
 
