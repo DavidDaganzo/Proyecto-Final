@@ -7,6 +7,8 @@ import uploadServices from '../../services/upload.service'
 
 const NewPropertyForm = () => {
 
+  const [images, setImages] = useState([]);
+
   const [propertyData, setPropertyData] = useState({
     name: '',
     capacity: 0,
@@ -21,6 +23,7 @@ const NewPropertyForm = () => {
 
   const [loadingImage, setLoadingImage] = useState(false)
 
+
   const handleInputChange = e => {
     const { name, value } = e.target
     setPropertyData({ ...propertyData, [name]: value })
@@ -29,18 +32,23 @@ const NewPropertyForm = () => {
     const { name, checked } = e.target
     setPropertyData({ ...propertyData, extras: { ...propertyData.extras, [name]: checked } }
     )
-    console.log(propertyData)
   }
 
 
   const navigate = useNavigate()
 
-  const handleFileChange = e => {
+
+  const handleFilesChange = e => {
 
     setLoadingImage(true)
 
     const formData = new FormData()
-    formData.append('imageData', e.target.files[0])
+
+    for (let i = 0; i < e.target.files.length; i++) {
+      formData.append('imageData', e.target.files[i])
+
+    }
+
     uploadServices
       .uploadimage(formData)
       .then(res => {
@@ -49,6 +57,22 @@ const NewPropertyForm = () => {
       })
       .catch(err => console.log(err))
   }
+
+
+  // const handleFileChange = e => {
+
+  //   setLoadingImage(true)
+
+  //   const formData = new FormData()
+  //   formData.append('imageData', e.target.files[0])
+  //   uploadServices
+  //     .uploadimage(formData)
+  //     .then(res => {
+  //       setPropertyData({ ...propertyData, image: res.data.cloudinary_url })
+  //       setLoadingImage(false)
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
 
   const handleFormSubmit = e => {
@@ -132,9 +156,9 @@ const NewPropertyForm = () => {
           <Row>
             <Col>
 
-              <Form.Group className="mb-3" controlId="image">
+              <Form.Group className="mb-3" controlId="image" >
                 <Form.Label>Imagen</Form.Label>
-                <Form.Control type="file" onChange={handleFileChange} />
+                <Form.Control type="file" onChange={handleFilesChange} multiple />
               </Form.Group>
 
             </Col>
