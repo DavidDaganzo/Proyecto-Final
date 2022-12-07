@@ -45,6 +45,23 @@ const EditPropertyForm = () => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
+    const [properties, setProperties] = useState()
+    const { property_id } = useParams()
+
+
+    useEffect(() => {
+        propertiesService
+            .getOneProperty(property_id)
+            .then(({ data }) => setProperties(data))
+            .catch(err => console.error(err))
+    }, [])
+
+    const editProperty = () => {
+        propertiesService
+            .edit(property_id)
+            .then(({ data }) => setProperties(data))
+            .catch(err => console.error(err))
+    }
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -223,7 +240,7 @@ const EditPropertyForm = () => {
                     </Row>
 
                     <div className="d-grid mb-5">
-                        <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>
+                        <Button variant="dark" type="submit" onClick={editProperty} disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Editar'}</Button>
                     </div>
 
                 </Form>

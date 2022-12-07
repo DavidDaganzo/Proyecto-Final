@@ -6,7 +6,7 @@ import PropertiesListPage from "../pages/PropertiesListPage/PropertiesListPage";
 import NewPropertyPage from "../pages/NewPropertyPage/NewPropertyPage";
 import PropertyDetailsPage from "../pages/PropertyDetails/PropertyDetails";
 import EditPropertyPage from "../pages/EditPropertyPage/EditPropertyPage";
-import Map from "../pages/Map/Map";
+import Map from "../components/Map/Map";
 
 const AppRoutes = () => {
     return (

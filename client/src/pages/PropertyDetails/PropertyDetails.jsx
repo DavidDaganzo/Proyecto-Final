@@ -3,6 +3,9 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import propertiesService from "../../services/Properties.service"
 import MyCarousel from '../../components/PropertyCard/MyCarousel';
+import Map from "../../components/Map/Map";
+
+
 const PropertyDetailsPage = () => {
 
     const [properties, setProperties] = useState()
@@ -50,7 +53,8 @@ const PropertyDetailsPage = () => {
                             <Col md={{ span: 5 }}>
                                 <br />
                                 <MyCarousel arrayOfImage={properties.image} />
-
+                                <br />
+                                <Map {...properties.location} />
                             </Col>
                             <Col md={{ span: 5, offset: 1 }}>
 
