@@ -81,7 +81,7 @@ const PropertyDetailsPage = () => {
                                     <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Volver a la Lista</Button>
                                 </Link>
                                 <Link to={`/edit/${property_id}`}>
-                                    <Button variant="outline-warning" className='me-2' onClick={editProperty}>Editar</Button>
+                                    <Button variant="outline-warning" className='me-3 mb-4 mt-2' onClick={editProperty}>Editar</Button>
                                 </Link>
                                 <Link to="/properties">
                                     <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>

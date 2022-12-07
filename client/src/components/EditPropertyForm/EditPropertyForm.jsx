@@ -1,23 +1,47 @@
 import React from 'react'
-import { Form, Button, Row, Col, Container } from "react-bootstrap"
+import { Form, Button, Row, Col, Container, Spinner } from "react-bootstrap"
 import propertiesService from "../../services/Properties.service"
-import { useNavigate } from 'react-router-dom'
-import { useState } from "react"
+import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from "react"
 import uploadServices from '../../services/upload.service'
 
 const EditPropertyForm = () => {
+
+    const { property_id } = useParams()
 
     const [propertyData, setPropertyData] = useState({
         name: '',
         capacity: 0,
         category: '',
-        lat: 0, lng: 0,
+        lat: 0,
+        lng: 0,
         image: [],
         description: '',
         city: '',
         price: '',
         extras: { pool: null, barbaque: null, terrace: null, wifi: null, airconditioning: null }
     })
+
+    const editProperty = () => {
+        propertiesService
+            .edit(property_id)
+            .then(({ data }) => setPropertyData(data))
+            .catch(err => console.error(err))
+    }
+
+
+    useEffect(() => {
+        propertiesService
+            .getOneProperty(property_id)
+            .then(({ data }) => {
+                const { name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = data
+                console.log(data)
+                const newObj = { name, capacity, lat: location.coordinates[0], lng: location.coordinates[1], image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } }
+                setPropertyData(newObj)
+
+            })
+            .catch(err => console.error(err))
+    }, [])
 
     const [loadingImage, setLoadingImage] = useState(false)
 
@@ -73,13 +97,15 @@ const EditPropertyForm = () => {
         <>
 
             <Container>
+
+
                 <h1>Crear nuevo alojamiento</h1>
                 <Form onSubmit={handleFormSubmit}>
                     <Row>
                         <Col>
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>Nombre</Form.Label>
-                                <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
+                                <Form.Control type="text" value={name} onChange={handleInputChange} name="name" placeholder={name} />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -100,19 +126,19 @@ const EditPropertyForm = () => {
                         <Col>
                             <Form.Group className="mb-3" controlId="capacity">
                                 <Form.Label>Capacidad </Form.Label>
-                                <Form.Control type="number" value={capacity} onChange={handleInputChange} name="capacity" />
+                                <Form.Control type="number" value={capacity} onChange={handleInputChange} name="capacity" placeholder={capacity} />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group className="mb-3" controlId="city">
                                 <Form.Label>Ciudad</Form.Label>
-                                <Form.Control type="text" value={city} onChange={handleInputChange} name="city" />
+                                <Form.Control type="text" value={city} onChange={handleInputChange} name="city" placeholder={city} />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group className="mb-3" controlId="price">
                                 <Form.Label>Precio</Form.Label>
-                                <Form.Control type="number" value={price} onChange={handleInputChange} name="price" />
+                                <Form.Control type="number" value={price} onChange={handleInputChange} name="price" placeholder={price} />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -121,13 +147,13 @@ const EditPropertyForm = () => {
                         <Col>
                             <Form.Group className="mb-3" controlId="lat">
                                 <Form.Label>Latitud</Form.Label>
-                                <Form.Control type="number" value={lat} onChange={handleInputChange} name="lat" />
+                                <Form.Control type="number" value={lat} onChange={handleInputChange} name="lat" placeholder={lat} />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group className="mb-3" controlId="lng">
                                 <Form.Label>Longitud</Form.Label>
-                                <Form.Control type="number" value={lng} onChange={handleInputChange} name="lng" />
+                                <Form.Control type="number" value={lng} onChange={handleInputChange} name="lng" placeholder={lng} />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -145,7 +171,7 @@ const EditPropertyForm = () => {
                         <Col>
                             <Form.Group className="mb-3" controlId="description">
                                 <Form.Label>Descripcion</Form.Label>
-                                <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
+                                <Form.Control type="text" value={description} onChange={handleInputChange} name="description" placeholder={description} />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -157,6 +183,7 @@ const EditPropertyForm = () => {
 
 
                             <Form.Check onChange={handleSwitchChange}
+                                checked={pool}
                                 name="pool"
                                 type="switch"
                                 id="custom-switch"
@@ -185,6 +212,7 @@ const EditPropertyForm = () => {
                             />
 
                             <Form.Check onChange={handleSwitchChange}
+                                checked={airconditioning}
                                 name="airconditioning"
                                 type="switch"
                                 id="custom-switch"
@@ -199,6 +227,7 @@ const EditPropertyForm = () => {
                     </div>
 
                 </Form>
+
             </Container>
         </>
     )
