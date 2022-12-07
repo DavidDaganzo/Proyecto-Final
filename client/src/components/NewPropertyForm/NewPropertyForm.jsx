@@ -37,7 +37,6 @@ const NewPropertyForm = () => {
 
   const navigate = useNavigate()
 
-
   const handleFilesChange = e => {
 
     setLoadingImage(true)
@@ -59,26 +58,9 @@ const NewPropertyForm = () => {
   }
 
 
-  // const handleFileChange = e => {
-
-  //   setLoadingImage(true)
-
-  //   const formData = new FormData()
-  //   formData.append('imageData', e.target.files[0])
-  //   uploadServices
-  //     .uploadimage(formData)
-  //     .then(res => {
-  //       setPropertyData({ ...propertyData, image: res.data.cloudinary_url })
-  //       setLoadingImage(false)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
-
 
   const handleFormSubmit = e => {
     e.preventDefault()
-
-
     propertiesService
       .saveProperty(propertyData)
       .then(() => {

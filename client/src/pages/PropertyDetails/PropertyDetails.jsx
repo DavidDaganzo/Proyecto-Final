@@ -54,7 +54,6 @@ const PropertyDetailsPage = () => {
                                 <ul>
                                     <li>Capacidad: {properties.capacity} personas</li>
                                     <li>Precio por noche: {properties.price}€</li>
-
                                 </ul>
                                 <hr />
 
@@ -70,6 +69,7 @@ const PropertyDetailsPage = () => {
                         </Row>
                     </>
             }
+
 
         </Container >
     )
