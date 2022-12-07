@@ -22,6 +22,10 @@ class PropertiesService {
         return this.api.post('/saveProperty', propertyData)
     }
 
+    edit(property_id) {
+        return this.api.post(`/edit/${property_id}`)
+    }
+
     delete(property_id) {
         return this.api.post(`/delete/${property_id}`)
     }

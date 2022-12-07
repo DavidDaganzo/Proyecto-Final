@@ -16,6 +16,13 @@ const PropertyDetailsPage = () => {
             .catch(err => console.error(err))
     }, [])
 
+    const editProperty = () => {
+        propertiesService
+            .edit(property_id)
+            .then(({ data }) => setProperties(data))
+            .catch(err => console.error(err))
+    }
+
     const deleteProperty = () => {
         propertiesService
             .delete(property_id)
@@ -58,6 +65,9 @@ const PropertyDetailsPage = () => {
 
                                 <Link to="/properties">
                                     <Button as="div" variant="outline-dark" className='me-2'>Volver a la Lista</Button>
+                                </Link>
+                                <Link to={`/edit/${property_id}`}>
+                                    <Button variant="outline-warning" className='me-2' onClick={editProperty}>Editar</Button>
                                 </Link>
                                 <Link to="/properties">
                                     <Button variant="outline-danger" onClick={deleteProperty}>Eliminar</Button>

@@ -7,8 +7,6 @@ import uploadServices from '../../services/upload.service'
 
 const NewPropertyForm = () => {
 
-  const [images, setImages] = useState([]);
-
   const [propertyData, setPropertyData] = useState({
     name: '',
     capacity: 0,

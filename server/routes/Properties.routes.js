@@ -40,7 +40,6 @@ router.post("/saveProperty", (req, res) => {
 })
 
 
-
 router.post('/edit/:property_id', (req, res) => {
 
   const { property_id } = req.params
@@ -52,7 +51,7 @@ router.post('/edit/:property_id', (req, res) => {
   }
 
   Property
-    .findByIdAndUpdate(property_id, req.body)
+    .findByIdAndUpdate({ name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning }, property_id })
     .then(response => res.json(response))
     .catch(err => console.log(err))
 })
