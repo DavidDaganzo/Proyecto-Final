@@ -20,9 +20,15 @@ const propertySchema = new Schema(
             coordinates: [Number]
 
         },
-        image: {
-            type: [String]
-        },
+        // image: {
+        //     type: [String]
+        // },
+        image: [
+            {
+                URL: String,
+                filename: String
+            }
+        ],
         description: {
             type: String,
             minlength: 50,

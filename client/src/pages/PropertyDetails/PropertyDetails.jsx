@@ -44,6 +44,9 @@ const PropertyDetailsPage = () => {
                         <Row>
                             <Col md={{ span: 4 }}>
                                 <img src={properties.image} style={{ width: '100%' }} />
+                                {/* {properties.image.array.forEach(element => {
+                                    <img src={element} style={{ width: '100%' }} />
+                                });} */}
                             </Col>
                             <Col md={{ span: 6, offset: 1 }}>
                                 <h3>Especificaciones</h3>
