@@ -4,11 +4,11 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import MyCarousel from './MyCarousel';
 
-function PropertyCard({ name, price, _id }) {
+function PropertyCard({ name, price, _id, image }) {
   return (
 
     <Card style={{ width: '18rem' }}>
-      <MyCarousel />
+      <MyCarousel arrayOfImage={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text> {price} €/noche </Card.Text>

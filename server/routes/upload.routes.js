@@ -8,8 +8,10 @@ router.post('/image', uploader.array('imageData'), (req, res) => {
     res.status(500).json({ errorMessage: 'Error caragndo el archivo' })
     return
   }
+  const url = req.files.map(elm => elm.path)
 
-  res.json({ cloudinary_urls: req.files })
+  console.log(req.files)
+  res.json({ cloudinary_urls: url })
 })
 
 
