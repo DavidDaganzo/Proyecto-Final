@@ -14,7 +14,7 @@ const NewPropertyForm = () => {
     capacity: 0,
     category: '',
     lat: 0, lng: 0,
-    image: '',
+    image: [],
     description: '',
     city: '',
     price: '',
@@ -45,13 +45,13 @@ const NewPropertyForm = () => {
 
     for (let i = 0; i < e.target.files.length; i++) {
       formData.append('imageData', e.target.files[i])
-
     }
 
     uploadServices
       .uploadimage(formData)
       .then(res => {
-        setPropertyData({ ...propertyData, image: res.data.cloudinary_url })
+        setPropertyData({ ...propertyData, image: res.data.cloudinary_urls })
+        console.log(res.data.cloudinary_urls)
         setLoadingImage(false)
       })
       .catch(err => console.log(err))
