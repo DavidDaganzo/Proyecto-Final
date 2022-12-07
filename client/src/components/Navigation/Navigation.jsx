@@ -7,7 +7,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context'
 
+
 const Navigation = () => {
+
+
     const { user, logoutUser } = useContext(AuthContext)
     return (
         <Navbar bg="light" expand="lg" >
