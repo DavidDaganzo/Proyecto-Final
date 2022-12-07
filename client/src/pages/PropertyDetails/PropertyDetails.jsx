@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import propertiesService from "../../services/Properties.service"
-
+import MyCarousel from '../../components/PropertyCard/MyCarousel';
 const PropertyDetailsPage = () => {
 
     const [properties, setProperties] = useState()
@@ -36,41 +36,55 @@ const PropertyDetailsPage = () => {
     return (
 
         <Container>
-
             {
-
                 !properties
                     ?
 
                     < h1 > CARGANDO</h1>
                     :
                     <>
-                        <h1 className="mb-4">Detalles de {properties.name}</h1>
+                        <h1 className="mb-4 text-center mt-5">{properties.name}</h1>
                         <hr />
 
                         <Row>
-                            <Col md={{ span: 4 }}>
-                                <img src={properties.image[0]} style={{ width: '100%' }} />
-                                <img src={properties.image[1]} style={{ width: '100%' }} />
+                            <Col md={{ span: 5 }}>
+                                <br />
+                                <MyCarousel arrayOfImage={properties.image} />
 
                             </Col>
-                            <Col md={{ span: 6, offset: 1 }}>
-                                <h3>Especificaciones</h3>
+                            <Col md={{ span: 5, offset: 1 }}>
+
+                                <h3 className='mb-2 mt-4'>Capacidad:</h3>
+                                <p>{properties.capacity} personas</p>
+                                <hr />
+                                <h3>Precio por noche:</h3>
+                                <p>{properties.price}€ </p>
+                                <hr />
+                                <h3>Ciudad: </h3>
+                                <p>{properties.city}</p>
+                                <hr />
+                                <h3>Descripción:</h3>
+                                <br />
                                 <p>{properties.description}</p>
+                                <hr />
+                                <h3>Extras:</h3>
                                 <ul>
-                                    <li>Capacidad: {properties.capacity} personas</li>
-                                    <li>Precio por noche: {properties.price}€</li>
+                                    <li>Piscina: {properties.extras.pool ? '✅' : '❌'}</li>
+                                    <li>Barbacoa: {properties.extras.barbaque ? '✅' : '❌'}</li>
+                                    <li>Terraza: {properties.extras.terrace ? '✅' : '❌'}</li>
+                                    <li>Wifi: {properties.extras.wifi ? '✅' : '❌'}</li>
+                                    <li>Aire acondicionado: {properties.extras.airconditioning ? '✅' : '❌'}</li>
                                 </ul>
                                 <hr />
 
                                 <Link to="/properties">
-                                    <Button as="div" variant="outline-dark" className='me-2'>Volver a la Lista</Button>
+                                    <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Volver a la Lista</Button>
                                 </Link>
                                 <Link to={`/edit/${property_id}`}>
                                     <Button variant="outline-warning" className='me-2' onClick={editProperty}>Editar</Button>
                                 </Link>
                                 <Link to="/properties">
-                                    <Button variant="outline-danger" onClick={deleteProperty}>Eliminar</Button>
+                                    <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>
                                 </Link>
                             </Col>
 
