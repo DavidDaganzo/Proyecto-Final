@@ -2,6 +2,8 @@ import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from "../../services/Auth.service"
 import { useNavigate } from 'react-router-dom'
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
+const saltRounds = 10
 
 const SignupForm = () => {
 
@@ -17,8 +19,7 @@ const SignupForm = () => {
         setSignupData({ ...signupData, [name]: value })
     }
 
-
-
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
 
     const handleSubmit = e => {
@@ -30,7 +31,7 @@ const SignupForm = () => {
             .then(() => {
                 navigate('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
 
@@ -69,6 +70,8 @@ const SignupForm = () => {
                 />
             </Form.Group>
 
+
+            {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
 
             <div className="d-grid">
                 <Button variant="dark" type="submit">Registrarme</Button>

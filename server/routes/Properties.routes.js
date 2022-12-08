@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const Property = require('./../models/Property.model')
+const Property = require('../models/Property.model')
 
 router.get("/getAllProperties", (req, res) => {
 
@@ -20,7 +20,6 @@ router.get("/getOneProperty/:property_id", (req, res, next) => {
     .then(response => res.json(response))
     .catch(err => next(err))
 })
-
 
 router.post("/saveProperty", (req, res, next) => {
 
