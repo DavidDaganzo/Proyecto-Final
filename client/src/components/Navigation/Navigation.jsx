@@ -10,8 +10,8 @@ import { AuthContext } from '../../context/auth.context'
 
 const Navigation = () => {
 
-
     const { user, logoutUser } = useContext(AuthContext)
+
     return (
         <Navbar bg="light" expand="lg" >
             <Container fluid>
@@ -42,25 +42,22 @@ const Navigation = () => {
                     </Nav>
                     <Form className="d-flex me-5">
                         <NavDropdown title="Mi cuenta" id="navbarScrollingDropdown">
+
                             <Link to="/login">
                                 <NavDropdown.Item as="div">Iniciar sesión</NavDropdown.Item>
                             </Link>
+
                             <Link to="/">
-                                <NavDropdown.Item as="div">  {user ?
-                                    <>
-                                        <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>
-
-                                    </>
-                                    :
-                                    <> </>
-                                }
-
+                                <NavDropdown.Item as="div">
+                                    {user && <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>}
                                 </NavDropdown.Item>
                             </Link>
+
                             <NavDropdown.Divider />
                             <Link to="/register">
                                 <NavDropdown.Item as="div">Registrarse</NavDropdown.Item>
                             </Link>
+
                         </NavDropdown>
                     </Form>
                     <Nav.Link as="div">¡Hola, {!user ? 'invitad@' : user.username}!</Nav.Link>

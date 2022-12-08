@@ -1,7 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import LoginForm from '../../components/LoginForm/LoginForm'
 
-const LogIn = () => {
+const LogInPage = () => {
 
     return (
 
@@ -24,4 +24,4 @@ const LogIn = () => {
     )
 }
 
-export default LogIn
+export default LogInPage

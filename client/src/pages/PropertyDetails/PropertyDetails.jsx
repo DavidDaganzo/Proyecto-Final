@@ -8,77 +8,74 @@ import Map from "../../components/Map/Map";
 
 const PropertyDetailsPage = () => {
 
-    const [properties, setProperties] = useState()
+    const [property, setProperty] = useState()
     const { property_id } = useParams()
 
-
-    useEffect(() => {
+    const loadProperty = () => {
         propertiesService
             .getOneProperty(property_id)
-            .then(({ data }) => setProperties(data))
-            .catch(err => console.error(err))
-    }, [])
-
-    const editProperty = () => {
-        propertiesService
-            .edit(property_id)
-            .then(({ data }) => setProperties(data))
+            .then(({ data }) => setProperty(data))
             .catch(err => console.error(err))
     }
+
+    useEffect(() => {
+        loadProperty()
+    }, [])
+
 
     const deleteProperty = () => {
         propertiesService
             .delete(property_id)
-            .then(({ data }) => setProperties(data))
+            .then(({ data }) => setProperty(data))
             .catch(err => console.error(err))
     }
-
-
-
 
     return (
 
         <Container>
             {
-                !properties
+                !property
                     ?
 
                     < h1 > CARGANDO</h1>
                     :
                     <>
-                        <h1 className="mb-4 text-center mt-5">{properties.name}</h1>
+                        <h1 className="mb-4 text-center mt-5">{property.name}</h1>
                         <hr />
 
                         <Row>
                             <Col md={{ span: 5 }}>
                                 <br />
-                                <MyCarousel arrayOfImage={properties.image} />
+                                <MyCarousel arrayOfImage={property.image} />
                                 <br />
-                                <Map {...properties.location} />
+                                <Map {...property.location} />
                                 <br />
                             </Col>
                             <Col md={{ span: 5, offset: 1 }}>
 
                                 <h3 className='mb-2 mt-4'>Capacidad:</h3>
-                                <p>{properties.capacity} personas</p>
+                                <p>{property.capacity} personas</p>
+                                <hr />
+                                <h3 className='mb-2 mt-4'>Categoría:</h3>
+                                <p>{property.category}</p>
                                 <hr />
                                 <h3>Precio por noche:</h3>
-                                <p>{properties.price}€ </p>
+                                <p>{property.price}€ </p>
                                 <hr />
                                 <h3>Ciudad: </h3>
-                                <p>{properties.city}</p>
+                                <p>{property.city}</p>
                                 <hr />
                                 <h3>Descripción:</h3>
                                 <br />
-                                <p>{properties.description}</p>
+                                <p>{property.description}</p>
                                 <hr />
                                 <h3>Extras:</h3>
                                 <ul>
-                                    <li>Piscina: {properties.extras.pool ? '✅' : '❌'}</li>
-                                    <li>Barbacoa: {properties.extras.barbaque ? '✅' : '❌'}</li>
-                                    <li>Terraza: {properties.extras.terrace ? '✅' : '❌'}</li>
-                                    <li>Wifi: {properties.extras.wifi ? '✅' : '❌'}</li>
-                                    <li>Aire acondicionado: {properties.extras.airconditioning ? '✅' : '❌'}</li>
+                                    <li>Piscina: {property.pool ? '✅' : '❌'}</li>
+                                    <li>Barbacoa: {property.barbaque ? '✅' : '❌'}</li>
+                                    <li>Terraza: {property.terrace ? '✅' : '❌'}</li>
+                                    <li>Wifi: {property.wifi ? '✅' : '❌'}</li>
+                                    <li>Aire acondicionado: {property.airconditioning ? '✅' : '❌'}</li>
                                 </ul>
                                 <hr />
 
@@ -86,7 +83,7 @@ const PropertyDetailsPage = () => {
                                     <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Volver a la Lista</Button>
                                 </Link>
                                 <Link to={`/edit/${property_id}`}>
-                                    <Button variant="outline-warning" className='me-3 mb-4 mt-2' onClick={editProperty}>Editar</Button>
+                                    <Button variant="outline-warning" className='me-3 mb-4 mt-2'>Editar</Button>
                                 </Link>
                                 <Link to="/properties">
                                     <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>
