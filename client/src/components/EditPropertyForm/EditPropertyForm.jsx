@@ -45,23 +45,17 @@ const EditPropertyForm = () => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
-    const [properties, setProperties] = useState()
-    const { property_id } = useParams()
 
 
-    useEffect(() => {
-        propertiesService
-            .getOneProperty(property_id)
-            .then(({ data }) => setProperties(data))
-            .catch(err => console.error(err))
-    }, [])
 
-    const editProperty = () => {
-        propertiesService
-            .edit(property_id)
-            .then(({ data }) => setProperties(data))
-            .catch(err => console.error(err))
-    }
+    // useEffect(() => {
+    //     propertiesService
+    //         .getOneProperty(property_id)
+    //         .then(({ data }) => setProperties(data))
+    //         .catch(err => console.error(err))
+    // }, [])
+
+
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -97,16 +91,25 @@ const EditPropertyForm = () => {
     }
 
 
-
     const handleFormSubmit = e => {
         e.preventDefault()
         propertiesService
-            .saveProperty(propertyData)
+            .editProperty(property_id, propertyData)
             .then(() => {
                 navigate('/properties')
             })
             .catch(err => console.error(err))
     }
+
+    // const handleFormSubmit = e => {
+    //     e.preventDefault()
+    //     propertiesService
+    //         .saveProperty(propertyData)
+    //         .then(() => {
+    //             navigate('/properties')
+    //         })
+    //         .catch(err => console.error(err))
+    // }
 
     const { name, capacity, lat, lng, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = propertyData
 
@@ -208,6 +211,7 @@ const EditPropertyForm = () => {
                             />
 
                             <Form.Check onChange={handleSwitchChange}
+                                checked={barbaque}
                                 name="barbaque"
                                 type="switch"
                                 id="custom-switch"
@@ -215,6 +219,7 @@ const EditPropertyForm = () => {
                             />
 
                             <Form.Check onChange={handleSwitchChange}
+                                checked={terrace}
                                 name="terrace"
                                 type="switch"
                                 id="custom-switch"
@@ -222,6 +227,7 @@ const EditPropertyForm = () => {
                             />
 
                             <Form.Check onChange={handleSwitchChange}
+                                checked={wifi}
                                 name="wifi"
                                 type="switch"
                                 id="custom-switch"
@@ -240,7 +246,7 @@ const EditPropertyForm = () => {
                     </Row>
 
                     <div className="d-grid mb-5">
-                        <Button variant="dark" type="submit" onClick={editProperty} disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Editar'}</Button>
+                        <Button variant="dark mt-5" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Editar'}</Button>
                     </div>
 
                 </Form>

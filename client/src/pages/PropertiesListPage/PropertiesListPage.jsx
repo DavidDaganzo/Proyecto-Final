@@ -32,7 +32,7 @@ const PropertiesListPage = () => {
         {!properties ? <Loader /> : <PropertiesList properties={properties} />}
         <hr />
         <Link to="/">
-          <Button variant="dark">Volver a inicio</Button>
+          <Button className="mb-3" variant="dark">Volver a inicio</Button>
         </Link>
       </Container>
 

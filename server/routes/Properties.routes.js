@@ -51,8 +51,8 @@ router.post('/edit/:property_id', (req, res) => {
   }
 
   Property
-    .findByIdAndUpdate({ name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning }, property_id })
-    .then(response => res.json(response))
+    .findByIdAndUpdate(property_id, { name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } })
+    .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
 

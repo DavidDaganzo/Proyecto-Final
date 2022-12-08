@@ -55,6 +55,7 @@ const PropertyDetailsPage = () => {
                                 <MyCarousel arrayOfImage={properties.image} />
                                 <br />
                                 <Map {...properties.location} />
+                                <br />
                             </Col>
                             <Col md={{ span: 5, offset: 1 }}>
 

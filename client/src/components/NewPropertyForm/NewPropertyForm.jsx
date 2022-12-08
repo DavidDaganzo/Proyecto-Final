@@ -194,8 +194,8 @@ const NewPropertyForm = () => {
             </Col>
           </Row>
 
-          <div className="d-grid mb-5">
-            <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>
+          <div className="d-grid mb-5 mt-4">
+            <Button variant="dark " type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>
           </div>
 
         </Form>

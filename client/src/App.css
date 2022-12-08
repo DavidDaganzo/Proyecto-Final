@@ -1,11 +1,11 @@
 .App {
   font-family: 'Roboto', sans-serif;
+  text-align: justify;
 }
 
 .navbar {
   z-index: 9;
 }
-
 
 
 a {
