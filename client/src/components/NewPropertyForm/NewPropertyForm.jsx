@@ -4,6 +4,7 @@ import propertiesService from "../../services/Properties.service"
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react"
 import uploadServices from '../../services/upload.service'
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 const NewPropertyForm = () => {
 
@@ -20,7 +21,7 @@ const NewPropertyForm = () => {
   })
 
   const [loadingImage, setLoadingImage] = useState(false)
-
+  const [errors, setErrors] = useState([])
 
   const handleInputChange = e => {
     const { name, value } = e.target
@@ -64,7 +65,7 @@ const NewPropertyForm = () => {
       .then(() => {
         navigate('/properties')
       })
-      .catch(err => console.error(err))
+      .catch(err => setErrors(err.response.data.errorMessages))
   }
 
   const { name, capacity, lat, lng, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = propertyData
@@ -193,6 +194,8 @@ const NewPropertyForm = () => {
 
             </Col>
           </Row>
+
+          {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
 
           <div className="d-grid mb-5">
             <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>

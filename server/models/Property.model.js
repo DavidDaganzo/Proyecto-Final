@@ -5,34 +5,35 @@ const propertySchema = new Schema(
         name: {
             type: String,
             trim: true,
-            required: false,
+            required: [true, 'El nombre es obligatorio.'],
 
         },
         capacity: {
             type: Number,
-            required: true,
-            trim: true
+            trim: true,
+            required: [true, 'La capacidad es obligatoria.'],
         },
         location: {
             type: {
-                type: String
+                type: String,
             },
-            coordinates: [Number]
-
+            coordinates: [Number],
+            // required: [true, 'La localizacion es obligatoria.']
         },
         image: {
-            type: [String]
+            type: [String],
+            required: [true, 'Las imagenes son obligatoria.'],
         },
 
 
         description: {
             type: String,
-            minlength: 50,
-
+            required: [true, 'La descripción es obligatoria.'],
+            minlength: [50, 'La descripción debe tener min. 50 caracteres.']
         },
         city: {
             type: String,
-            required: true
+            required: [true, 'La ciudad son obligatoria.']
         },
         // createdBy: {
         //     type: Schema.Types.ObjectId,
@@ -40,12 +41,13 @@ const propertySchema = new Schema(
         // },
         price: {
             type: Number,
-            require: true
+            required: [true, 'El precio es obligatorio.'],
         },
         category: {
             type: String,
             enum: ['House', 'Hotel', 'Villa', 'Capsule-Hotel'],
-            default: 'House'
+            default: 'House',
+            required: [true, 'La categoria es obligatoria.'],
         },
         extras: {
             pool: {
@@ -63,7 +65,8 @@ const propertySchema = new Schema(
             },
             airconditioning: {
                 type: Boolean
-            }
+            },
+            // required: [true, 'Los extras son obligatorios.'],
         },
 
 
