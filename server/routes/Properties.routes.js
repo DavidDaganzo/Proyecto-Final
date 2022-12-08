@@ -29,6 +29,7 @@ router.post("/saveProperty", (req, res, next) => {
     type: 'Point',
     coordinates: [lat, lng]
   }
+
   Property
     .create({ name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } })
     .then(response => res.json(response))
@@ -48,7 +49,18 @@ router.post('/edit/:property_id', (req, res) => {
   }
 
   Property
-    .findByIdAndUpdate(property_id, { name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } })
+    .findByIdAndUpdate(property_id,
+      {
+        name,
+        capacity,
+        location,
+        image,
+        description,
+        city,
+        price,
+        category,
+        extras: { pool, barbaque, terrace, wifi, airconditioning }
+      })
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })

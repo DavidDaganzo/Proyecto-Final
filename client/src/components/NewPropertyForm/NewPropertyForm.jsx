@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap"
 import propertiesService from "../../services/Properties.service"
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react"
-import uploadServices from '../../services/upload.service'
+import uploadServices from '../../services/Upload.service'
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 const NewPropertyForm = () => {
@@ -27,6 +27,7 @@ const NewPropertyForm = () => {
     const { name, value } = e.target
     setPropertyData({ ...propertyData, [name]: value })
   }
+
   const handleSwitchChange = e => {
     const { name, checked } = e.target
     setPropertyData({ ...propertyData, extras: { ...propertyData.extras, [name]: checked } }
@@ -50,7 +51,6 @@ const NewPropertyForm = () => {
       .uploadimage(formData)
       .then(res => {
         setPropertyData({ ...propertyData, image: res.data.cloudinary_urls })
-        console.log(res.data.cloudinary_urls)
         setLoadingImage(false)
       })
       .catch(err => console.log(err))
