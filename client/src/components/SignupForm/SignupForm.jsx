@@ -57,7 +57,7 @@ const SignupForm = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
-            {/* 
+
             <Form.Group className=" mb-3">
                 <Form.Label>Imagen</Form.Label>
                 <Form.Control
@@ -67,7 +67,7 @@ const SignupForm = () => {
                     onChange={handleInputChange}
 
                 />
-            </Form.Group> */}
+            </Form.Group>
 
 
             <div className="d-grid">

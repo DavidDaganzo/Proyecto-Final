@@ -42,13 +42,8 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
-
-
-
-
-
 router.post('/login', (req, res, next) => {
-
+  console.log('HOL')
   const { email, password } = req.body;
 
   if (email === '' || password === '') {
@@ -59,7 +54,7 @@ router.post('/login', (req, res, next) => {
   User
     .findOne({ email })
     .then((foundUser) => {
-
+      console.log(foundUser)
       if (!foundUser) {
         res.status(401).json({ message: "User not found." })
         return;

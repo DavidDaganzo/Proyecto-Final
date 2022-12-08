@@ -45,7 +45,8 @@ const EditPropertyForm = () => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
-
+    // const [properties, setProperties] = useState()
+    // const { property_id } = useParams()
 
 
     // useEffect(() => {
@@ -55,7 +56,12 @@ const EditPropertyForm = () => {
     //         .catch(err => console.error(err))
     // }, [])
 
-
+    // const editProperty =() => {
+    //     propertiesService
+    //         .edit(property_id)
+    //         .then(({ data }) => setProperties(data))
+    //         .catch(err => console.error(err))
+    // }
 
     const handleInputChange = e => {
         const { name, value } = e.target
