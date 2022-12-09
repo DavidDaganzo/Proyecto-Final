@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import authService from "../../services/Auth.service"
 import { useNavigate } from 'react-router-dom'
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
-const saltRounds = 10
+
 
 const SignupForm = () => {
 

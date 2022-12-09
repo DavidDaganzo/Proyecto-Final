@@ -71,11 +71,11 @@ const PropertyDetailsPage = () => {
                                 <hr />
                                 <h3>Extras:</h3>
                                 <ul>
-                                    <li>Piscina: {property.pool ? '✅' : '❌'}</li>
-                                    <li>Barbacoa: {property.barbaque ? '✅' : '❌'}</li>
-                                    <li>Terraza: {property.terrace ? '✅' : '❌'}</li>
-                                    <li>Wifi: {property.wifi ? '✅' : '❌'}</li>
-                                    <li>Aire acondicionado: {property.airconditioning ? '✅' : '❌'}</li>
+                                    <li>Piscina: {property.extras.pool ? '✅' : '❌'}</li>
+                                    <li>Barbacoa: {property.extras.barbaque ? '✅' : '❌'}</li>
+                                    <li>Terraza: {property.extras.terrace ? '✅' : '❌'}</li>
+                                    <li>Wifi: {property.extras.wifi ? '✅' : '❌'}</li>
+                                    <li>Aire acondicionado: {property.extras.airconditioning ? '✅' : '❌'}</li>
                                 </ul>
                                 <hr />
 

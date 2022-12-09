@@ -6,6 +6,7 @@ import NewPropertyPage from "../pages/NewPropertyPage/NewPropertyPage";
 import PropertyDetailsPage from "../pages/PropertyDetails/PropertyDetails";
 import EditPropertyPage from "../pages/EditPropertyPage/EditPropertyPage";
 import Map from "../components/Map/Map";
+import Calendar from "../pages/CalendarPage/CalendarPage";
 import SignupPage from "../pages/SignUpPage/SignUpPage";
 
 const AppRoutes = () => {
@@ -21,6 +22,7 @@ const AppRoutes = () => {
             <Route path="/register" element={<SignupPage />} />
             <Route path="/login" element={<LogInPage />} />
             <Route path="/map" element={<Map />} />
+            <Route path="/calendar" element={<Calendar />} />
             <Route path="/profile" element={<p>perfil</p>} />
             <Route path="/*" element={<h1>404</h1>} />
         </Routes>

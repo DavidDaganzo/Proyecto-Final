@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap"
 import propertiesService from "../../services/Properties.service"
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react"
-import uploadServices from '../../services/Upload.service'
+import uploadServices from '../../services/upload.service'
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 const NewPropertyForm = () => {
