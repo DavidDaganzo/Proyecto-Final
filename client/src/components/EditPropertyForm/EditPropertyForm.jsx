@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, Container, Spinner } from "react-bootstrap"
 import propertiesService from "../../services/Properties.service"
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from "react"
-import uploadServices from '../../services/Upload.service'
+import uploadServices from '../../services/upload.service'
 
 const EditPropertyForm = () => {
 

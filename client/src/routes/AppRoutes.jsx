@@ -7,12 +7,16 @@ import PropertyDetailsPage from "../pages/PropertyDetails/PropertyDetails";
 import EditPropertyPage from "../pages/EditPropertyPage/EditPropertyPage";
 import Map from "../components/Map/Map";
 import SignupPage from "../pages/SignUpPage/SignUpPage";
+import PrivateRoute from "./PrivateRoute";
+
+
+
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/create-propety" element={<NewPropertyPage />} />
+            {/* <Route path="/create-propety" element={<NewPropertyPage />} /> */}
             <Route path="/properties" element={<PropertiesListPage />} />
             <Route path="/detalles/:property_id" element={<PropertyDetailsPage />} />
             <Route path="/edit/:property_id" element={<EditPropertyPage />} />
@@ -23,7 +27,14 @@ const AppRoutes = () => {
             <Route path="/map" element={<Map />} />
             <Route path="/profile" element={<p>perfil</p>} />
             <Route path="/*" element={<h1>404</h1>} />
-        </Routes>
+
+            <Route path="/create-propety" element={<PrivateRoute />}>
+                <Route path="" element={<NewPropertyPage />} />
+            </Route>
+
+        </Routes >
+
+
     );
 }
 
