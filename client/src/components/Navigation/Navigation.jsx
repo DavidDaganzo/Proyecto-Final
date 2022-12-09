@@ -39,6 +39,9 @@ const Navigation = () => {
                         <Link to="/profile">
                             <Nav.Link as="div">Perfil</Nav.Link>
                         </Link>
+                        <Link to="/calendar">
+                            <Nav.Link as="div">Calendario</Nav.Link>
+                        </Link>
                     </Nav>
                     <Form className="d-flex me-5">
                         <NavDropdown title="Mi cuenta" id="navbarScrollingDropdown">

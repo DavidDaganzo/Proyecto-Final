@@ -1,12 +1,14 @@
 import Carousel from 'react-bootstrap/Carousel';
 import AutoComplete from '../../components/SeachBar/SeachBar';
 import './HomePage.css'
+import Header from '../../components/Header/Header';
 
 const HomePage = () => {
     return (
         <>
-            <AutoComplete />
+            <Header />
             <Carousel>
+
                 <Carousel.Item className='IndexCarousel'>
                     <img
                         className="d-block w-100"
