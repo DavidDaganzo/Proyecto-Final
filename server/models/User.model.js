@@ -31,9 +31,9 @@ const userSchema = new Schema(
       default: 'USER'
     },
 
-    favourites: [{
+    reserves: [{
       type: Schema.Types.ObjectId,
-      ref: 'Property',
+      ref: 'Booking',
     }],
   },
 

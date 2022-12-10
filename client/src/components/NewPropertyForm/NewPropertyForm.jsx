@@ -73,136 +73,135 @@ const NewPropertyForm = () => {
   return (
     <>
 
-      <Container>
-        <h1>Crear nuevo alojamiento</h1>
-        <Form onSubmit={handleFormSubmit}>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
-              </Form.Group>
-            </Col>
-          </Row>
 
-          <Row>
-            <Col>
-              <Form.Select className="mb-3" aria-label="category" name='category' onChange={handleInputChange}>
-                <option>Categoría</option>
-                <option value="House">Apartamento</option>
-                <option value="Hotel">Hotel</option>
-                <option value="Villa">Chalet</option>
-                <option value="Capsule-Hotel">Hotel cápsula</option>
-              </Form.Select  >
-            </Col>
-          </Row>
+      <Form onSubmit={handleFormSubmit}>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />
+            </Form.Group>
+          </Col>
+        </Row>
 
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="capacity">
-                <Form.Label>Capacidad </Form.Label>
-                <Form.Control type="number" value={capacity} onChange={handleInputChange} name="capacity" />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="city">
-                <Form.Label>Ciudad</Form.Label>
-                <Form.Control type="text" value={city} onChange={handleInputChange} name="city" />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="price">
-                <Form.Label>Precio</Form.Label>
-                <Form.Control type="number" value={price} onChange={handleInputChange} name="price" />
-              </Form.Group>
-            </Col>
-          </Row>
+        <Row>
+          <Col>
+            <Form.Select className="mb-3" aria-label="category" name='category' onChange={handleInputChange}>
+              <option>Categoría</option>
+              <option value="House">Apartamento</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Villa">Chalet</option>
+              <option value="Capsule-Hotel">Hotel cápsula</option>
+            </Form.Select  >
+          </Col>
+        </Row>
 
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="lat">
-                <Form.Label>Latitud</Form.Label>
-                <Form.Control type="number" value={lat} onChange={handleInputChange} name="lat" />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="lng">
-                <Form.Label>Longitud</Form.Label>
-                <Form.Control type="number" value={lng} onChange={handleInputChange} name="lng" />
-              </Form.Group>
-            </Col>
-          </Row>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="capacity">
+              <Form.Label>Capacidad </Form.Label>
+              <Form.Control type="number" value={capacity} onChange={handleInputChange} name="capacity" />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="city">
+              <Form.Label>Ciudad</Form.Label>
+              <Form.Control type="text" value={city} onChange={handleInputChange} name="city" />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="price">
+              <Form.Label>Precio</Form.Label>
+              <Form.Control type="number" value={price} onChange={handleInputChange} name="price" />
+            </Form.Group>
+          </Col>
+        </Row>
 
-
-          <Row>
-            <Col>
-
-              <Form.Group className="mb-3" controlId="image" >
-                <Form.Label>Imagen</Form.Label>
-                <Form.Control type="file" onChange={handleFilesChange} multiple />
-              </Form.Group>
-
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="description">
-                <Form.Label>Descripcion</Form.Label>
-                <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
-              </Form.Group>
-            </Col>
-          </Row>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3" controlId="lat">
+              <Form.Label>Latitud</Form.Label>
+              <Form.Control type="number" value={lat} onChange={handleInputChange} name="lat" />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="lng">
+              <Form.Label>Longitud</Form.Label>
+              <Form.Control type="number" value={lng} onChange={handleInputChange} name="lng" />
+            </Form.Group>
+          </Col>
+        </Row>
 
 
+        <Row>
+          <Col>
 
-          <Row>
-            <Col>
+            <Form.Group className="mb-3" controlId="image" >
+              <Form.Label>Imagen</Form.Label>
+              <Form.Control type="file" onChange={handleFilesChange} multiple />
+            </Form.Group>
+
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="description">
+              <Form.Label>Descripcion</Form.Label>
+              <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
+            </Form.Group>
+          </Col>
+        </Row>
 
 
-              <Form.Check onChange={handleSwitchChange}
-                name="pool"
-                type="switch"
-                id="custom-switch"
-                label="Piscina"
-              />
 
-              <Form.Check onChange={handleSwitchChange}
-                name="barbaque"
-                type="switch"
-                id="custom-switch"
-                label="Barbacoa"
-              />
+        <Row>
+          <Col>
 
-              <Form.Check onChange={handleSwitchChange}
-                name="terrace"
-                type="switch"
-                id="custom-switch"
-                label="Terraza"
-              />
 
-              <Form.Check onChange={handleSwitchChange}
-                name="wifi"
-                type="switch"
-                id="custom-switch"
-                label="Wifi"
-              />
+            <Form.Check onChange={handleSwitchChange}
+              name="pool"
+              type="switch"
+              id="custom-switch"
+              label="Piscina"
+            />
 
-              <Form.Check onChange={handleSwitchChange}
-                name="airconditioning"
-                type="switch"
-                id="custom-switch"
-                label="Aire acondicionado"
-              />
+            <Form.Check onChange={handleSwitchChange}
+              name="barbaque"
+              type="switch"
+              id="custom-switch"
+              label="Barbacoa"
+            />
 
-            </Col>
-          </Row>
+            <Form.Check onChange={handleSwitchChange}
+              name="terrace"
+              type="switch"
+              id="custom-switch"
+              label="Terraza"
+            />
 
-          {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
+            <Form.Check onChange={handleSwitchChange}
+              name="wifi"
+              type="switch"
+              id="custom-switch"
+              label="Wifi"
+            />
 
-          <div className=" d-grid mb-5 mt-4">
-            <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>
-          </div>
+            <Form.Check onChange={handleSwitchChange}
+              name="airconditioning"
+              type="switch"
+              id="custom-switch"
+              label="Aire acondicionado"
+            />
 
-        </Form>
-      </Container>
+          </Col>
+        </Row>
+
+        {errors.length ? <ErrorMessage>{errors.map(elm => <p key={elm}>{elm}</p>)}</ErrorMessage> : undefined}
+
+        <div className=" d-grid mb-5 mt-4">
+          <Button variant="dark" type="submit" disabled={loadingImage}>{loadingImage ? 'Subiendo imagen...' : 'Crear nueva propiedad'}</Button>
+        </div>
+
+      </Form>
+
     </>
   )
 }

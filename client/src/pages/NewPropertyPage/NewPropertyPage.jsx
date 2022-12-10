@@ -1,11 +1,13 @@
 import React from 'react'
 import NewPropertyForm from '../../components/NewPropertyForm/NewPropertyForm'
+import { Container } from 'react-bootstrap'
 
 const NewPropertyPage = () => {
   return (
-    <div>
+    <Container>
+      <h1>Crear nuevo alojamiento</h1>
       <NewPropertyForm />
-    </div>
+    </Container>
   )
 }
 export default NewPropertyPage

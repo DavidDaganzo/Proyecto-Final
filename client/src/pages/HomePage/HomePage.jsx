@@ -8,16 +8,13 @@ const HomePage = () => {
         <>
             <Header />
             <Carousel>
-
                 <Carousel.Item className='IndexCarousel'>
                     <img
                         className="d-block w-100"
                         src="https://www.casasordesa.com/documentos_web/documentos/Casa%20ordesa%20pano%20horizontal%20bis.jpg"
                         alt="First slide"
                     />
-                    <input type="text" />
                     <Carousel.Caption>
-                        <input type="text" />
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className='IndexCarousel'>
@@ -28,7 +25,6 @@ const HomePage = () => {
                     />
 
                     <Carousel.Caption>
-                        <input type="text" />
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className='IndexCarousel'>
@@ -37,11 +33,12 @@ const HomePage = () => {
                         src="https://media-magazine.trivago.com/wp-content/uploads/sites/3/2016/08/17120409/hoteles-7-estrellas-Laucala-Island-Resort-piscina.jpg"
                         alt="Third slide"
                     />
+
                     <Carousel.Caption>
-                        <input type="text" />
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+
         </>
     )
 }

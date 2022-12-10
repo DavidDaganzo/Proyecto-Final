@@ -35,10 +35,10 @@ const propertySchema = new Schema(
             type: String,
             required: [true, 'La ciudad son obligatoria.']
         },
-        // createdBy: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'User',
-        // },
+        createdBy: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
         price: {
             type: Number,
             required: [true, 'El precio es obligatorio.'],

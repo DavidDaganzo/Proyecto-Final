@@ -9,7 +9,6 @@ import { format } from "date-fns";
 function Header(props) {
     console.log(props);
     const [openDate, setOpenDate] = useState(false);
-
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -68,8 +67,10 @@ function Header(props) {
                                         moveRangeOnFirstSelection={false}
                                         ranges={date}
                                         className="date"
+                                        withPortal
                                     />
                                 )}
+
                             </div>
                             <div className="headerSearchItem">
 
@@ -109,6 +110,7 @@ function Header(props) {
                         </div>
                     </>
                 )}
+
             </div>
         </div>
     );

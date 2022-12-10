@@ -23,7 +23,15 @@ router.get("/getOneProperty/:property_id", (req, res, next) => {
 
 router.post("/saveProperty", (req, res, next) => {
 
-  const { name, capacity, lat, lng, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } } = req.body
+  const { name,
+    capacity,
+    lat, lng,
+    image,
+    description,
+    city,
+    price,
+    category,
+    extras: { pool, barbaque, terrace, wifi, airconditioning } } = req.body
 
   const location = {
     type: 'Point',
