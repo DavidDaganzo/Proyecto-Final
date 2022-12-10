@@ -2,16 +2,17 @@
 
     display: flex;
     justify-content: center;
-    position: relative;
-
+    position: absolute;
     z-index: 1;
-
+    top: 50%;
+    left: 28%;
 }
 
 .headerContainer {
     width: 100%;
     max-width: 1024px;
     margin: 20px 0px 100px 0px;
+
 }
 
 .headerBtn {
@@ -19,10 +20,11 @@
     color: white;
     font-weight: 500;
     border: none;
-    padding: 10px;
+    padding: 2px 5px;
     cursor: pointer;
-    height: 30px;
     border-radius: 10px;
+    margin-left: 10%;
+
 }
 
 .headerSearch {
@@ -37,6 +39,7 @@
     bottom: -25px;
     width: 100%;
     max-width: 1024px;
+    padding: 15px;
 
 }
 
@@ -44,15 +47,19 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 20px;
 }
+
+
 
 .headerSearchInput {
     border: none;
     outline: none;
+
 }
 
 .headerSearchText {
-    color: lightgray;
+    color: black;
     cursor: pointer;
 }
 
@@ -74,12 +81,6 @@
     -moz-box-shadow: 11px 3px 8px -5px rgba(0, 0, 0, 0.33);
 }
 
-/* .optionsItems {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-} */
 
 .optionCounterButton:disabled {
     cursor: not-allowed;

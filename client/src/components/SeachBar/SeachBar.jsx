@@ -1,28 +1,67 @@
-import { useRef, useEffect } from "react";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import useOnclickOutside from "react-cool-onclickoutside";
+import './SeachBar.css'
 
-const AutoComplete = () => {
-  const autoCompleteRef = useRef();
-  const inputRef = useRef();
-  const options = {
-    componentRestrictions: { country: "ng" },
-    fields: ["address_components", "geometry", "icon", "name"],
-    types: ["establishment"]
-  };
-  useEffect(() => {
-    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-      inputRef.current,
-      options
-    );
-    autoCompleteRef.current.addListener("place_changed", async function () {
-      const place = await autoCompleteRef.current.getPlace();
-      console.log({ place });
+const PlacesAutocomplete = () => {
+  const { ready, value,
+    suggestions: { status, data }, setValue, clearSuggestions, } = usePlacesAutocomplete({
+      requestOptions: {
+        /* Define search scope here */
+      },
+      debounce: 300,
     });
-  }, []);
+  const ref = useOnclickOutside(() => {
+
+    clearSuggestions();
+  });
+
+  const handleInput = (e) => {
+    // Update the keyword of the input element
+    setValue(e.target.value);
+  };
+
+  const handleSelect =
+    ({ description }) =>
+      () => {
+        // When user selects a place, we can replace the keyword without request data from API
+        // by setting the second parameter to "false"
+        setValue(description, false);
+        clearSuggestions();
+
+        // Get latitude and longitude via utility functions
+        getGeocode({ address: description }).then((results) => {
+          const { lat, lng } = getLatLng(results[0]);
+          console.log("📍 Coordinates: ", { lat, lng });
+        });
+      };
+
+  const renderSuggestions = () =>
+    data.map((suggestion) => {
+      const {
+        place_id,
+        structured_formatting: { main_text, secondary_text },
+      } = suggestion;
+
+      return (
+        <li className="SeachBarLi" key={place_id} onClick={handleSelect(suggestion)}>
+          <strong>{main_text}</strong> <small>{secondary_text}</small>
+        </li>
+      );
+    });
+
   return (
-    <div>
-      <label>Buscador 2.0 top top MDFK JEJE :</label>
-      <input ref={inputRef} />
+    <div ref={ref} className='SeachBarDiv'>
+      <input
+        className="SeachBar"
+        value={value}
+        onChange={handleInput}
+        disabled={!ready}
+        placeholder="Empieza tu búsqueda"
+      />
+      {/* We can use the "status" to decide whether we should display the dropdown or not */}
+      {status === "OK" && <ul className="SeachBarUl">{renderSuggestions()}</ul>}
     </div>
   );
 };
-export default AutoComplete;
+
+export default PlacesAutocomplete

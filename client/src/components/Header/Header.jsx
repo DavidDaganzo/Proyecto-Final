@@ -5,9 +5,11 @@ import { useState } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
+import PlacesAutocomplete from "../SeachBar/SeachBar";
 
-function Header(props) {
-    console.log(props);
+function Header(
+
+) {
     const [openDate, setOpenDate] = useState(false);
 
     const [date, setDate] = useState([
@@ -17,6 +19,7 @@ function Header(props) {
             key: "selection"
         }
     ]);
+
 
     const [openOptions, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
@@ -34,83 +37,72 @@ function Header(props) {
 
     return (
         <div className="header">
-            <div
-                className={
-                    props.type === "list" ? "headerContainer listMode" : "headerContainer"
-                }
-            >
 
-                {props.type !== "list" && (
-                    <>
-
-                        <div className="headerSearch">
-                            <div className="headerSearchItem">
-
-                                <input
+            <div className="headerSearch">
+                <div className="headerSearchItem">
+                    <PlacesAutocomplete />
+                    {/* <input
                                     type="text"
                                     placeholder="wher are you going?"
                                     className="headerSearchInput"
-                                />
-                            </div>
-                            <div className="headerSearchItem">
+                                /> */}
+                </div>
+                <div className="headerSearchItem">
 
-                                <span
-                                    onClick={() => setOpenDate(!openDate)}
-                                    className="headerSearchText"
-                                >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-                                    date[0].endDate,
-                                    "MM/dd/yyyy"
-                                )}`}</span>
-                                {openDate && (
-                                    <DateRange
-                                        editableDateInputs={true}
-                                        onChange={(item) => setDate([item.selection])}
-                                        moveRangeOnFirstSelection={false}
-                                        ranges={date}
-                                        className="date"
-                                    />
-                                )}
-                            </div>
-                            <div className="headerSearchItem">
+                    <span
+                        onClick={() => setOpenDate(!openDate)}
+                        className="headerSearchText "
+                    >{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+                        date[0].endDate,
+                        "MM/dd/yyyy"
+                    )}`}</span>
+                    {openDate && (
+                        <DateRange
+                            editableDateInputs={true}
+                            onChange={(item) => setDate([item.selection])}
+                            moveRangeOnFirstSelection={false}
+                            ranges={date}
+                            className="date"
+                        />
+                    )}
+                </div>
+                <div className="headerSearchItem">
 
-                                <span
-                                    onClick={() => setOpenOptions(!openOptions)}
-                                    className="headerSearchText"
-                                >{`Capacidad: ${options.capacity}  `}</span>
-                                {openOptions && (
-                                    <div className="options">
-                                        <div className="optionsItems">
-                                            <span className="optionText">Capacidad</span>
-                                            <div className="optionCounter">
-                                                <button
-                                                    disabled={options.capacity <= 1}
-                                                    className="optionCounterButton"
-                                                    onClick={() => handleOption("capacity", "d")}
-                                                >
-                                                    -
-                                                </button>
-                                                <span className="optionCounterNumber">
-                                                    {options.capacity}
-                                                </span>
-                                                <button
-                                                    className="optionCounterButton"
-                                                    onClick={() => handleOption("capacity", "i")}
-                                                >
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                            <div className="headerSearchItem">
-                                <button className="headerBtn">Search</button>
+                    <span
+                        onClick={() => setOpenOptions(!openOptions)}
+                        className="headerSearchText"
+                    >{`Capacidad: ${options.capacity}  `}</span>
+                    {openOptions && (
+                        <div className="options">
+                            <div className="optionsItems">
+                                <span className="optionText">Capacidad</span>
+                                <div className="optionCounter">
+                                    <button
+                                        disabled={options.capacity <= 1}
+                                        className="optionCounterButton"
+                                        onClick={() => handleOption("capacity", "d")}
+                                    >
+                                        -
+                                    </button>
+                                    <span className="optionCounterNumber">
+                                        {options.capacity}
+                                    </span>
+                                    <button
+                                        className="optionCounterButton"
+                                        onClick={() => handleOption("capacity", "i")}
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </>
-                )}
+                    )}
+                </div>
+                <div className="headerSearchItem">
+                    <button className="headerBtn">Search</button>
+                </div>
             </div>
         </div>
-    );
+    )
 }
 export default Header

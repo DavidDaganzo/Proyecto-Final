@@ -1,30 +1,28 @@
 const { Schema, model } = require("mongoose");
 
-const reserveSchema = new Schema(
+const bookingSchema = new Schema(
     {
-        reserveNumber: {
-            type: String,
-            trim: true,
 
-        },
         entranceDate: {
             type: Date,
-            require: true,
+            required: true,
 
         },
         exitDate: {
             type: Date,
-            require: true,
+            required: true,
 
         },
-        // resevedBy: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'User',
-        // },
-        // reservedProperty: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'Property',
-        // },
+        bookedBy: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            //     required: true,
+        },
+        bookedProperty: {
+            type: Schema.Types.ObjectId,
+            ref: 'Property',
+            // required: true,
+        },
 
     },
     {
@@ -35,4 +33,4 @@ const reserveSchema = new Schema(
 
 
 
-module.exports = model('Reserve', reserveSchema)
+module.exports = model('booking', bookingSchema)

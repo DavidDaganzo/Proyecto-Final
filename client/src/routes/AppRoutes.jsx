@@ -9,6 +9,7 @@ import Map from "../components/Map/Map";
 import Calendar from "../pages/CalendarPage/CalendarPage";
 import SignupPage from "../pages/SignUpPage/SignUpPage";
 import PrivateRoute from "./PrivateRoute";
+import BookingCalendar from "../components/BookingCaledar/BookingCalendar";
 
 
 
@@ -32,6 +33,10 @@ const AppRoutes = () => {
 
             <Route path="/create-propety" element={<PrivateRoute />}>
                 <Route path="" element={<NewPropertyPage />} />
+            </Route>
+
+            <Route path="/booking/:property_id" element={<PrivateRoute />}>
+                <Route path="" element={<BookingCalendar />} />
             </Route>
 
         </Routes >
