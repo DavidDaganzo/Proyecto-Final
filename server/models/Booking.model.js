@@ -1,24 +1,27 @@
 const { Schema, model } = require("mongoose");
 
-const reserveSchema = new Schema(
+const bookingSchema = new Schema(
     {
+
         entranceDate: {
             type: Date,
-            require: true,
+            required: true,
 
         },
         exitDate: {
             type: Date,
-            require: true,
+            required: true,
 
         },
-        resevedBy: {
+        bookedBy: {
             type: Schema.Types.ObjectId,
             ref: 'User',
+            //     required: true,
         },
-        reservedProperty: {
+        bookedProperty: {
             type: Schema.Types.ObjectId,
             ref: 'Property',
+            // required: true,
         },
 
     },
@@ -30,4 +33,4 @@ const reserveSchema = new Schema(
 
 
 
-module.exports = model('Reserve', reserveSchema)
+module.exports = model('booking', bookingSchema)

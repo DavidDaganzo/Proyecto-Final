@@ -1,15 +1,10 @@
 .header {
     display: flex;
     justify-content: center;
-    position: relative;
+    position: absolute;
     z-index: 1;
-
-    background-color: #d59797;
-
-}
-
-.rdrDefinedRangesWrapper {
-    display: none;
+    top: 50%;
+    left: 28%;
 }
 
 .headerContainer {
@@ -17,6 +12,7 @@
     height: 50%;
     max-width: 1024px;
     margin: 20px 0px 100px 0px;
+
 }
 
 .headerBtn {
@@ -24,10 +20,11 @@
     color: white;
     font-weight: 500;
     border: none;
-    padding: 10px;
+    padding: 2px 5px;
     cursor: pointer;
-    height: 30px;
     border-radius: 10px;
+    margin-left: 10%;
+
 }
 
 .headerSearch {
@@ -42,23 +39,27 @@
     bottom: -25px;
     width: 100%;
     max-width: 1024px;
-    position: relative;
-    z-index: 1;
+    padding: 15px;
+
 }
 
 .headerSearchItem {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 20px;
 }
+
+
 
 .headerSearchInput {
     border: none;
     outline: none;
+
 }
 
 .headerSearchText {
-    color: lightgray;
+    color: black;
     cursor: pointer;
 }
 

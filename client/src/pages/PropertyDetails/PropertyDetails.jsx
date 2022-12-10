@@ -79,6 +79,9 @@ const PropertyDetailsPage = () => {
                                 </ul>
                                 <hr />
 
+                                <Link to={`/booking/${property_id}`}>
+                                    <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Reservar</Button>
+                                </Link>
                                 <Link to="/properties">
                                     <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Volver a la Lista</Button>
                                 </Link>

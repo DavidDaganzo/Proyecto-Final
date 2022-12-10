@@ -31,7 +31,7 @@ const userSchema = new Schema(
       default: 'USER'
     },
 
-    reserves: [{
+    booking: [{
       type: Schema.Types.ObjectId,
       ref: 'Booking',
     }],

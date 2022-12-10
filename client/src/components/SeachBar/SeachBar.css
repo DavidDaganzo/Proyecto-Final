@@ -1,0 +1,20 @@
+.SeachBar {
+  border: none;
+  outline: none;
+}
+
+.SeachBarDiv {
+  align-self: start;
+}
+
+.SeachBarUl {
+  background-color: white;
+  position: absolute;
+  list-style: none;
+  padding-left: 3px;
+}
+
+.SeachBarLi {
+  text-decoration: none;
+
+}
