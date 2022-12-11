@@ -7,7 +7,7 @@ const HomePage = () => {
     return (
         <>
             <Header />
-            <Carousel>
+            {/* <Carousel>
                 <Carousel.Item className='IndexCarousel'>
                     <img
                         className="d-block w-100"
@@ -37,7 +37,18 @@ const HomePage = () => {
                     <Carousel.Caption>
                     </Carousel.Caption>
                 </Carousel.Item>
-            </Carousel>
+            </Carousel> */}
+
+            <video className='homeVideo' src="https://res.cloudinary.com/devlxmp7l/video/upload/v1670700657/video_ynp7ld.mp4"
+                autoPlay
+                controls
+                muted
+                playsInline
+            ></video>
+
+
+
+            {/* <source src="https://res.cloudinary.com/devlxmp7l/video/upload/v1670700657/video_ynp7ld.mp4" type="video/mp4" /> */}
 
         </>
     )

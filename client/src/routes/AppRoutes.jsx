@@ -6,13 +6,10 @@ import NewPropertyPage from "../pages/NewPropertyPage/NewPropertyPage";
 import PropertyDetailsPage from "../pages/PropertyDetails/PropertyDetails";
 import EditPropertyPage from "../pages/EditPropertyPage/EditPropertyPage";
 import Map from "../components/Map/Map";
-import Calendar from "../pages/CalendarPage/CalendarPage";
 import SignupPage from "../pages/SignUpPage/SignUpPage";
 import PrivateRoute from "./PrivateRoute";
-import BookingCalendar from "../components/BookingCaledar/BookingCalendar";
 import BookingPage from "../pages/BookingPage/BookingPage";
-
-
+import PropertyBookingPage from "../pages/PropertyBookingPage/PropertyBookingPage";
 
 
 const AppRoutes = () => {
@@ -37,7 +34,7 @@ const AppRoutes = () => {
             </Route>
 
             <Route path="/booking/:property_id" element={<PrivateRoute />}>
-                <Route path="" element={<BookingCalendar />} />
+                <Route path="" element={<PropertyBookingPage />} />
             </Route>
 
         </Routes >

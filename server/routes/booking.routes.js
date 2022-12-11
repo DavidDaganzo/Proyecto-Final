@@ -4,11 +4,14 @@ const { isAuthenticated } = require('../middleware/jwt.middleware')
 
 
 router.post("/saveBook", isAuthenticated, (req, res, next) => {
-
-    const { entranceDate, exitDate, reservedProperty } = req.body
     console.log(req.body)
+    const [reserva] = req.body
+    console.log(reserva)
+    const { startDate, endDate, bookedProperty } = reserva
+
+
     Booking
-        .create({ entranceDate, exitDate, resevedBy: req.payload._id, reservedProperty })
+        .create({ startDate, endDate, bookedBy: req.payload._id, bookedProperty })
         .then(response => res.json(response))
         .catch(err => next(err))
 
@@ -29,7 +32,7 @@ router.get('/:property_id', (req, res, next) => {
     const { property_id } = req.params
 
     Booking
-        .find({ reservedProperty: property_id })
+        .find({ bookedProperty: property_id })
         .then(response => res.json(response))
         .catch(err => next(err))
 })

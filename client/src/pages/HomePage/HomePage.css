@@ -6,3 +6,10 @@
   object-fit: cover;
   height: 100%;
 }
+
+.homeVideo {
+  width: 100%;
+  z-index: -1;
+  height: 800px;
+  margin-bottom: 0;
+}

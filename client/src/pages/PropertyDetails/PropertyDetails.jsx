@@ -91,9 +91,7 @@ const PropertyDetailsPage = () => {
                                 <Link to="/properties">
                                     <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>
                                 </Link>
-                                <Link to="/booking">
-                                    <Button variant="outline-danger" className='me-3 mb-4 mt-2'>Reservar</Button>
-                                </Link>
+
                             </Col>
 
 

@@ -6,21 +6,15 @@ import { DateRangePicker } from "react-date-range";
 import { addDays } from "date-fns";
 import './BookingCalendar.css'
 
-const BookingCalendar = ({ onChange }) => {
+const BookingCalendar = ({ onChange, state, setState }) => {
 
 
-    const handleOnChange = (ranges) => {
-        const { selection } = ranges;
-        onChange(selection);
-        setState([selection]);
-    };
-    const [state, setState] = useState([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 1),
-            key: 'selection'
-        }
-    ]);
+    // const handleOnChange = (ranges) => {
+    //     const { selection } = ranges;
+    //     onChange(selection);
+    //     setState([selection]);
+    // };
+
     return (
         <DateRangePicker
             onChange={item => setState([item.selection])}

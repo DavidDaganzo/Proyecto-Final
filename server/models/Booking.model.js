@@ -3,12 +3,12 @@ const { Schema, model } = require("mongoose");
 const bookingSchema = new Schema(
     {
 
-        entranceDate: {
+        startDate: {
             type: Date,
             required: true,
 
         },
-        exitDate: {
+        endDate: {
             type: Date,
             required: true,
 
