@@ -2,7 +2,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import AutoComplete from '../../components/SeachBar/SeachBar';
 import './HomePage.css'
 import Header from '../../components/Header/Header';
-
+import video from '../../asssets/homePageVideo.mp4'
+import Loader from '../../components/Loader/Loader';
 const HomePage = () => {
     return (
         <>
@@ -38,14 +39,14 @@ const HomePage = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel> */}
-
-            <video className='homeVideo' src="https://res.cloudinary.com/devlxmp7l/video/upload/v1670700657/video_ynp7ld.mp4"
-                autoPlay
-                controls
-                muted
-                playsInline
-            ></video>
-
+            {!video ? <Loader /> :
+                <video className='homeVideo' src="https://res.cloudinary.com/devlxmp7l/video/upload/v1670700657/video_ynp7ld.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></video>
+            }
 
 
             {/* <source src="https://res.cloudinary.com/devlxmp7l/video/upload/v1670700657/video_ynp7ld.mp4" type="video/mp4" /> */}

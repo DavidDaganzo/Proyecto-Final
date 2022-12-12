@@ -27,6 +27,10 @@ class BookingService {
         return this.api.post(`/delete/${booking_id}`, bookingData)
     }
 
+    myBooking(user_id) {
+        return this.api.get(`/my-bookings/${user_id}`)
+    }
+
     propertyBooking(property_id, bookingData) {
         return this.api.get(`/${property_id}`, bookingData)
     }

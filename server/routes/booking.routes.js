@@ -35,4 +35,17 @@ router.get('/:property_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
+router.get('/my-bookings/:user_id', (req, res, next) => {
+    const { user_id } = req.params
+
+    Booking
+        .find({ bookedBy: user_id })
+        .populate('bookedProperty')
+        .then(response => {
+            console.log(response)
+            res.json(response)
+        })
+        .catch(err => next(err))
+})
+
 module.exports = router

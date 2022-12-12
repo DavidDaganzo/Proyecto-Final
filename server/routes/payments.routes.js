@@ -12,8 +12,6 @@ router.post("/", (req, res) => {
   const { id, amount } = req.body;
 
   if (req.body) {
-
-
     const payment = stripe.paymentIntents.create({
       amount,
       currency: "€",
