@@ -19,6 +19,7 @@ const BookingCalendar = ({ onChange, state, setState }) => {
         <DateRangePicker
             onChange={item => setState([item.selection])}
             showSelectionPreview={true}
+            editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             months={1}
             ranges={state}

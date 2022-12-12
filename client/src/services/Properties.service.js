@@ -14,6 +14,11 @@ class PropertiesService {
         return this.api.get('/getAllProperties')
     }
 
+    getLocationProperties(location) {
+        console.log(location)
+        return this.api.get(`/getLocationProperties?lat=${location.lat}&lng=${location.lng}`)
+    }
+
     getOneProperty(property_id) {
         return this.api.get(`/getOneProperty/${property_id}`)
     }

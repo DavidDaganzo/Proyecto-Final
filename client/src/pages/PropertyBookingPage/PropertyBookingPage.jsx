@@ -9,6 +9,7 @@ import Payment from '../../components/Payments/Payments';
 
 const PropertyBookingPage = () => {
   const { property_id } = useParams()
+
   const [state, setState] = useState([
     {
       startDate: new Date(),

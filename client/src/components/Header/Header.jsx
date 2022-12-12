@@ -5,7 +5,7 @@ import { useState } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
-import PlacesAutocomplete from "../SeachBar/SeachBar";
+import PlacesAutocomplete from "../SeachBar/SearchBar";
 
 function Header(
 

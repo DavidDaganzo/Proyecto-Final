@@ -10,6 +10,29 @@ router.get("/getAllProperties", (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
+router.get("/getLocationProperties", (req, res) => {
+
+  const { lat, lng } = req.query
+
+  console.log(req.query)
+
+  Property
+    .find(
+      {
+        location:
+        {
+          $near:
+          {
+            $geometry: { type: "Point", coordinates: [lat, lng] },
+            $maxDistance: 50000
+          }
+        }
+      }
+    )
+    .then(response => setTimeout(() => res.json(response), 1000))
+    .catch(err => res.status(500).json(err))
+})
+
 
 router.get("/getOneProperty/:property_id", (req, res, next) => {
 

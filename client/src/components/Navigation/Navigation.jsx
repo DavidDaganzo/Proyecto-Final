@@ -39,8 +39,8 @@ const Navigation = () => {
                         <Link to="/profile">
                             <Nav.Link as="div">Perfil</Nav.Link>
                         </Link>
-                        <Link to="/booking">
-                            <Nav.Link as="div">Reservas</Nav.Link>
+                        <Link to="/maps">
+                            <Nav.Link as="div">Map</Nav.Link>
                         </Link>
                     </Nav>
                     <Form className="d-flex me-5">

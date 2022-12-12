@@ -1,8 +1,12 @@
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
-import './SeachBar.css'
+import './SearchBar.css'
+import propertiesService from "../../services/Properties.service";
+import { useNavigate } from 'react-router-dom'
+import { Next } from "react-bootstrap/esm/PageItem";
 
-const PlacesAutocomplete = () => {
+// recibes por props setLocation
+const PlacesAutocomplete = ({ setLocation, setPropertiesLocation }) => {
   const { ready, value,
     suggestions: { status, data }, setValue, clearSuggestions, } = usePlacesAutocomplete({
       requestOptions: {
@@ -20,6 +24,7 @@ const PlacesAutocomplete = () => {
     setValue(e.target.value);
   };
 
+  const navigate = useNavigate()
   const handleSelect =
     ({ description }) =>
       () => {
@@ -29,10 +34,24 @@ const PlacesAutocomplete = () => {
         clearSuggestions();
 
         // Get latitude and longitude via utility functions
-        getGeocode({ address: description }).then((results) => {
-          const { lat, lng } = getLatLng(results[0]);
-          console.log("📍 Coordinates: ", { lat, lng });
-        });
+        getGeocode({ address: description })
+          .then((results) => {
+            const { lat, lng } = getLatLng(results[0]);
+            const location = { lat, lng }
+            console.log(location)
+            setLocation(location)
+
+
+            console.log(location)
+
+            propertiesService
+              .getLocationProperties(location)
+              .then(({ data }) => {
+                setPropertiesLocation(data)
+              })
+              .catch(err => console.log(err))
+            console.log("📍 Coordinates: ", { lat, lng });
+          });
       };
 
   const renderSuggestions = () =>
@@ -65,3 +84,4 @@ const PlacesAutocomplete = () => {
 };
 
 export default PlacesAutocomplete
+

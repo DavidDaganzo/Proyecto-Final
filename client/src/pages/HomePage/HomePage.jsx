@@ -1,5 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
-import AutoComplete from '../../components/SeachBar/SeachBar';
+import AutoComplete from '../../components/SeachBar/SearchBar';
 import './HomePage.css'
 import Header from '../../components/Header/Header';
 
