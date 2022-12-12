@@ -10,6 +10,7 @@ import SignupPage from "../pages/SignUpPage/SignUpPage";
 import PrivateRoute from "./PrivateRoute";
 import LocationPage from "../pages/LocationSearchPage/LocationSearchPage";
 import PropertyBookingPage from "../pages/PropertyBookingPage/PropertyBookingPage";
+import MyProfilePage from "../pages/MyProfilePage/MyProfilePage";
 
 
 const AppRoutes = () => {
@@ -26,7 +27,8 @@ const AppRoutes = () => {
             <Route path="/login" element={<LogInPage />} />
             <Route path="/map" element={<Map />} />
             <Route path="/maps" element={<LocationPage />} />
-            <Route path="/profile" element={<p>perfil</p>} />
+            <Route path="/booking" element={<BookingPage />} />
+
             <Route path="/*" element={<h1>404</h1>} />
 
             <Route path="/create-propety" element={<PrivateRoute />}>
@@ -36,6 +38,14 @@ const AppRoutes = () => {
             <Route path="/booking/:property_id" element={<PrivateRoute />}>
                 <Route path="" element={<PropertyBookingPage />} />
             </Route>
+
+            <Route path="/booking/:property_id" element={<PrivateRoute />}>
+                <Route path="" element={<PropertyBookingPage />} />
+            </Route>
+            <Route path="/profile" element={<PrivateRoute />}>
+                <Route path="" element={<MyProfilePage />} />
+            </Route>
+
 
         </Routes >
 
