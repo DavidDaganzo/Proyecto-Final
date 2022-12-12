@@ -4,9 +4,7 @@ const { isAuthenticated } = require('../middleware/jwt.middleware')
 
 
 router.post("/saveBook", isAuthenticated, (req, res, next) => {
-    console.log(req.body)
     const [reserva] = req.body
-    console.log(reserva)
     const { startDate, endDate, bookedProperty } = reserva
 
 

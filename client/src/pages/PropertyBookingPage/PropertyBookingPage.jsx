@@ -5,6 +5,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap"
 import BookingService from '../../services/Booking.service'
 import propertiesService from "../../services/Properties.service"
+import Payment from '../../components/Payments/Payments';
 
 const PropertyBookingPage = () => {
   const { property_id } = useParams()
@@ -84,6 +85,8 @@ const PropertyBookingPage = () => {
               </ul>
               <hr />
               <h3>Importe total = {property.price * Totaldays} €</h3>
+
+              <Payment amount={property.price * Totaldays} />
               <Link to="/properties">
                 <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={handleFormSubmit}>Reservar</Button>
               </Link>
