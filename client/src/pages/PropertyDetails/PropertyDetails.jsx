@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col, Button, Spinner } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import propertiesService from "../../services/Properties.service"
 import MyCarousel from '../../components/PropertyCard/MyCarousel';
@@ -37,7 +37,7 @@ const PropertyDetailsPage = () => {
                 !property
                     ?
 
-                    < h1 > CARGANDO</h1>
+                    <Spinner />
                     :
                     <>
                         <h1 className="mb-4 text-center mt-5">{property.name}</h1>
