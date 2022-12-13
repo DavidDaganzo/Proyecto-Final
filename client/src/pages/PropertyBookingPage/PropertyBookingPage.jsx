@@ -37,7 +37,6 @@ const PropertyBookingPage = () => {
 
 
   if (property) {
-    console.log('EL VALOR DE PROPERTY HA CAMBIADO Y AHORA es', property)
     const { startDate, endDate } = state[0]
     const TotaldaysInMs = new Date(endDate).getTime() - new Date(startDate).getTime()
     Totaldays = (TotaldaysInMs / 86400000)
@@ -61,7 +60,7 @@ const PropertyBookingPage = () => {
     BookingService
       .saveBooking(state)
       .then(() => {
-        navigate('/properties')
+        navigate('/profile')
       })
       .catch(err => console.log(err))
   }

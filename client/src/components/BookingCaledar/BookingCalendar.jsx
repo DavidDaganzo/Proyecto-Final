@@ -10,24 +10,39 @@ import { useParams } from "react-router-dom";
 
 
 
+function getDates(startDate, endDate) {
+    let array = []
+    for (let i = 0; new Date(startDate).getTime() + i < new Date(endDate).getTime(); i = i + 86400000) {
+        let day = new Date(startDate).getTime() + i
+
+        array.push(new Date(day));
+    }
+
+    return array;
+}
 
 
 const BookingCalendar = ({ state, setState }) => {
+
     const [bookedDates, setBookedDates] = useState([])
     const { property_id } = useParams()
+
+    const totalBookingDays = []
+
     const getBookedDate = () => {
         bookingService
             .propertyBooking(property_id)
             .then(({ data }) => {
-                const startDate = new Date(data[0].startDate).getTime()
-                const endDate = new Date(data[0].endDate).getTime()
 
+                data.forEach(booking => {
+                    const startDate = booking.startDate
+                    const endDate = booking.endDate
+                    const BookingDays = getDates(startDate, endDate)
+                    totalBookingDays.push(...BookingDays)
 
+                })
+                setBookedDates(totalBookingDays)
 
-
-
-                setBookedDates([...bookedDates, startDate, endDate])
-                console.log('actualizacion del estado weeeeeeeeeeeeeeeeeeeeeeee', bookedDates)
 
             })
             .catch(err => console.error(err))
@@ -36,7 +51,7 @@ const BookingCalendar = ({ state, setState }) => {
         getBookedDate()
     }, [])
 
-
+    console.log('SI SI YA VA', bookedDates)
     return (
         <DateRangePicker
             onChange={item => setState([item.selection])}
@@ -44,7 +59,7 @@ const BookingCalendar = ({ state, setState }) => {
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             months={1}
-            disabledDates={[new Date('2022-12-12'), new Date('2022-12-14')]}
+            disabledDates={bookedDates}
             ranges={state}
             direction="horizontal"
             preventSnapRefocus={true}
