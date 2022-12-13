@@ -5,24 +5,28 @@ const bookingSchema = new Schema(
 
         startDate: {
             type: Date,
-            required: true,
+            required: true
 
         },
         endDate: {
             type: Date,
-            required: true,
+            required: true
 
         },
         bookedBy: {
             type: Schema.Types.ObjectId,
             ref: 'User',
-            //     required: true,
+            required: true
         },
         bookedProperty: {
             type: Schema.Types.ObjectId,
             ref: 'Property',
-            // required: true,
+            required: true
         },
+        bookingAmount: {
+            type: Number,
+            required: true
+        }
 
     },
     {

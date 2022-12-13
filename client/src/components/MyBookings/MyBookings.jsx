@@ -1,4 +1,5 @@
-import { Container, Col, Row } from "react-bootstrap"
+import { Container, Col, Row, Card } from "react-bootstrap"
+import MyCarousel from "../PropertyCard/MyCarousel"
 const MyBookings = ({ bookings }) => {
 
   console.log(bookings)
@@ -9,17 +10,21 @@ const MyBookings = ({ bookings }) => {
         {bookings && bookings.map(elm => {
           return (
             <Col xs={12} md={6} lg={4} key={elm._id} className='mb-4' >
-
-              {/* <p>esta es tu reserva : {elm._id}</p> */}
-              <p>{elm.bookedProperty.name}</p>
-              <p>{elm.startDate}</p>
-              <p>{elm.endDate}</p>
-
+              <Card style={{ width: '21rem' }}>
+                <Card.Title className="text-center">{elm.bookedProperty.name}</Card.Title>
+                <hr />
+                <p>Id de la reserva: {elm._id}</p>
+                <p>Fecha de entrada: {elm.startDate.slice(0, -14)}</p>
+                <p>Fecha de salida: {elm.endDate.slice(0, -14)}</p>
+                <MyCarousel arrayOfImage={elm.bookedProperty.image} />
+              </Card>
             </Col>
           )
         })}
       </Row>
     </Container >
+
+
   )
 }
 

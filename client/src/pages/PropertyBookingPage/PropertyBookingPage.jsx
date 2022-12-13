@@ -16,6 +16,7 @@ const PropertyBookingPage = () => {
       endDate: addDays(new Date(), 1),
       key: 'selection',
       bookedProperty: property_id,
+      bookingAmount: undefined
     }
   ]);
 
@@ -34,11 +35,24 @@ const PropertyBookingPage = () => {
 
   let Totaldays = undefined
 
+
   if (property) {
+    console.log('EL VALOR DE PROPERTY HA CAMBIADO Y AHORA es', property)
     const { startDate, endDate } = state[0]
     const TotaldaysInMs = new Date(endDate).getTime() - new Date(startDate).getTime()
     Totaldays = (TotaldaysInMs / 86400000)
   }
+
+
+  useEffect(() => {
+    if (property) {
+      const stateCopy = { ...state[0] }
+      stateCopy.bookingAmount = property.price * Totaldays
+      setState([stateCopy])
+    }
+  }, [property, Totaldays])
+
+
 
   const navigate = useNavigate()
 
@@ -50,7 +64,6 @@ const PropertyBookingPage = () => {
         navigate('/properties')
       })
       .catch(err => console.log(err))
-
   }
 
 

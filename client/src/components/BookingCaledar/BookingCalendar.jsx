@@ -36,6 +36,7 @@ const BookingCalendar = ({ state, setState }) => {
         getBookedDate()
     }, [])
 
+
     return (
         <DateRangePicker
             onChange={item => setState([item.selection])}

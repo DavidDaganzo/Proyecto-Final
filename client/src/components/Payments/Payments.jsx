@@ -50,7 +50,6 @@ const CheckoutForm = ({ amount }) => {
     }
   };
 
-  console.log(!stripe || loading);
 
   return (
     <form className="card card-body" onSubmit={handleSubmit}>
