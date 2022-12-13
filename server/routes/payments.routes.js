@@ -1,34 +1,33 @@
 const express = require("express");
 const Stripe = require("stripe");
-const stripe = new Stripe("sk_test_51ME06zKXiVVeS2LSqp0Uad8PF30Gp33xptOCYWa7PAsWgQIVwcKFgKE3bnC2Iq6kUomnu3aNZQ5Mc31JBxiHvrJR00zUuAXOn6");
+const stripe = new Stripe("<your_secretkey_here>");
+
 const cors = require("cors");
-const router = require("express").Router()
 
+const app = express();
 
-// app.use(cors({ origin: "http://localhost:3000" }));
-// app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000" }));
+app.use(express.json());
 
-router.post("/", (req, res) => {
+app.post("/api/checkout", async (req, res) => {
+  // you can get more data to find in a database, and so on
   const { id, amount } = req.body;
 
-  if (req.body) {
-    const payment = stripe.paymentIntents.create({
+  try {
+    const payment = await stripe.paymentIntents.create({
       amount,
-      currency: "€",
-      description: "Reserva",
+      currency: "USD",
+      description: "Gaming Keyboard",
       payment_method: id,
-      confirm: true,
+      confirm: true, //confirm the payment at the same time
     });
 
     console.log(payment);
 
     return res.status(200).json({ message: "Successful Payment" });
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: error.raw.message });
   }
-  else {
-    console.log('error');
-
-  }
-
-
 });
-
+module.exports = router

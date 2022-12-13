@@ -19,15 +19,20 @@ const BookingCalendar = ({ state, setState }) => {
         bookingService
             .propertyBooking(property_id)
             .then(({ data }) => {
+                // console.log('DATA---------------', data)
                 const startDate = new Date(data[0].startDate).getTime()
                 const endDate = new Date(data[0].endDate).getTime()
+                // console.log('------------------------', [...bookedDates, startDate, endDate])
 
+                const disabledDates = []
+                data.forEach(booking => {
+                    const startDate = new Date(booking.startDate).getDate
+                    const endDate = new Date(booking.endDate).getTime()
+                    disabledDates.push(startDate)
+                    disabledDates.push(endDate)
+                })
+                setBookedDates([disabledDates])
 
-
-
-
-                setBookedDates([...bookedDates, startDate, endDate])
-                console.log('actualizacion del estado weeeeeeeeeeeeeeeeeeeeeeee', bookedDates)
 
             })
             .catch(err => console.error(err))
@@ -36,7 +41,7 @@ const BookingCalendar = ({ state, setState }) => {
         getBookedDate()
     }, [])
 
-
+    console.log(bookedDates)
     return (
         <DateRangePicker
             onChange={item => setState([item.selection])}
@@ -44,7 +49,7 @@ const BookingCalendar = ({ state, setState }) => {
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             months={1}
-            disabledDates={[new Date('2022-12-12'), new Date('2022-12-14')]}
+            disabledDates={[new Date('2022-12-12'), new Date('2022-12-13'), new Date('2022-12-14')]}
             ranges={state}
             direction="horizontal"
             preventSnapRefocus={true}

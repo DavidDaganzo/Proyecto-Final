@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 
 
 const containerStyle = {
@@ -28,13 +28,13 @@ function MyComponent(props) {
 
     const onLoad = React.useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(position);
-        const zoom = 8
+        const zoom = 15
         map.fitBounds(bounds);
         map.setZoom(zoom)
         setMap(map)
     }, [])
     const OPTIONS = {
-        minZoom: 4,
+        minZoom: 7,
         maxZoom: 15,
     }
     const onUnmount = React.useCallback(function callback(map) {
@@ -51,7 +51,7 @@ function MyComponent(props) {
         >
             <>
             </>
-            <Marker onLoad={MarkeronLoad} position={position} />
+            <MarkerF onLoad={MarkeronLoad} position={position} />
         </GoogleMap>
     ) : <></>
 }

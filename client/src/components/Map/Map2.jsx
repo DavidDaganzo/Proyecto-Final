@@ -2,6 +2,7 @@ import React from 'react'
 import { GoogleMap, useJsApiLoader, MarkerF, InfoWindow } from '@react-google-maps/api';
 import propertiesService from "../../services/Properties.service"
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const containerStyle = {
     width: '100%',
@@ -39,9 +40,12 @@ function Map({ location, propertiesLocation }) {
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, [])
+    const navigate = useNavigate()
+    const handleClick = (id) => {
+        navigate(`/detalles/${id}`)
+    }
 
-
-
+    console.log(propertiesLocation)
     return isLoaded && (
         <GoogleMap
             mapContainerStyle={containerStyle}
@@ -53,7 +57,7 @@ function Map({ location, propertiesLocation }) {
             {propertiesLocation && propertiesLocation.map((elm) => {
                 const [lat, lng] = elm.location.coordinates
 
-                return (<MarkerF position={{ lat, lng }}
+                return (<MarkerF position={{ lat, lng }} onClick={() => handleClick(elm._id)}
                 />)
             })}
 
