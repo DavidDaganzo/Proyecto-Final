@@ -10,29 +10,38 @@ import { useParams } from "react-router-dom";
 
 
 
+function getDates(startDate, endDate) {
+    let array = []
+    for (let i = 0; new Date(startDate).getTime() + i < new Date(endDate).getTime(); i = i + 86400000) {
+        let day = new Date(startDate).getTime() + i
+
+        array.push(new Date(day));
+    }
+
+    return array;
+}
 
 
 const BookingCalendar = ({ state, setState }) => {
+
     const [bookedDates, setBookedDates] = useState([])
     const { property_id } = useParams()
+
+    const totalBookingDays = []
+
     const getBookedDate = () => {
         bookingService
             .propertyBooking(property_id)
             .then(({ data }) => {
-                // console.log('DATA---------------', data)
-                const startDate = new Date(data[0].startDate).getTime()
-                const endDate = new Date(data[0].endDate).getTime()
-                // console.log('------------------------', [...bookedDates, startDate, endDate])
 
-                const disabledDates = []
                 data.forEach(booking => {
-                    const startDate = new Date(booking.startDate).getDate
-                    const endDate = new Date(booking.endDate).getTime()
-                    disabledDates.push(startDate)
-                    disabledDates.push(endDate)
-                })
-                setBookedDates([disabledDates])
+                    const startDate = booking.startDate
+                    const endDate = booking.endDate
+                    const BookingDays = getDates(startDate, endDate)
+                    totalBookingDays.push(...BookingDays)
 
+                })
+                setBookedDates(totalBookingDays)
 
             })
             .catch(err => console.error(err))
@@ -41,7 +50,7 @@ const BookingCalendar = ({ state, setState }) => {
         getBookedDate()
     }, [])
 
-    console.log(bookedDates)
+    console.log('SI SI YA VA', bookedDates)
     return (
         <DateRangePicker
             onChange={item => setState([item.selection])}
@@ -49,7 +58,7 @@ const BookingCalendar = ({ state, setState }) => {
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             months={1}
-            disabledDates={[new Date('2022-12-12'), new Date('2022-12-13'), new Date('2022-12-14')]}
+            disabledDates={bookedDates}
             ranges={state}
             direction="horizontal"
             preventSnapRefocus={true}
