@@ -5,11 +5,11 @@ const { isAuthenticated } = require('../middleware/jwt.middleware')
 
 router.post("/saveBook", isAuthenticated, (req, res, next) => {
     const [reserva] = req.body
-    const { startDate, endDate, bookedProperty } = reserva
+    const { startDate, endDate, bookedProperty, bookingAmount } = reserva
 
 
     Booking
-        .create({ startDate, endDate, bookedBy: req.payload._id, bookedProperty })
+        .create({ startDate, endDate, bookedBy: req.payload._id, bookedProperty, bookingAmount })
         .then(response => res.json(response))
         .catch(err => next(err))
 

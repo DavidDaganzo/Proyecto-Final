@@ -6,7 +6,7 @@ import { DateRangePicker } from "react-date-range";
 import { addDays } from "date-fns";
 import './BookingCalendar.css'
 
-const BookingCalendar = ({ onChange, state, setState }) => {
+const BookingCalendar = ({ state, setState }) => {
 
 
     // const handleOnChange = (ranges) => {
@@ -14,6 +14,7 @@ const BookingCalendar = ({ onChange, state, setState }) => {
     //     onChange(selection);
     //     setState([selection]);
     // };
+
 
     return (
         <DateRangePicker

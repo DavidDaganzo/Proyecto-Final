@@ -35,7 +35,7 @@ const MyProfilePage = () => {
             <h1>{user.username}</h1>
             <hr />
             <h3>Estas son tus reservas:</h3>
-            <p>{user.username}</p>
+            <br />
           </div>
           <MyBookings bookings={bookings} />
         </Col>
