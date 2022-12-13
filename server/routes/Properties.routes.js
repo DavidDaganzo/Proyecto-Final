@@ -24,7 +24,7 @@ router.get("/getLocationProperties", (req, res) => {
           $near:
           {
             $geometry: { type: "Point", coordinates: [lat, lng] },
-            $maxDistance: 50000
+            $maxDistance: 100000
           }
         }
       }

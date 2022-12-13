@@ -31,8 +31,8 @@ class BookingService {
         return this.api.get(`/my-bookings/${user_id}`)
     }
 
-    propertyBooking(property_id, bookingData) {
-        return this.api.get(`/${property_id}`, bookingData)
+    propertyBooking(property_id) {
+        return this.api.get(`/${property_id}`)
     }
 }
 

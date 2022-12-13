@@ -40,10 +40,6 @@ const PropertyBookingPage = () => {
     Totaldays = (TotaldaysInMs / 86400000)
   }
 
-
-
-
-
   const navigate = useNavigate()
 
   const handleFormSubmit = e => {

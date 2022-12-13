@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF, InfoWindow } from '@react-google-maps/api';
 import propertiesService from "../../services/Properties.service"
 import { useState } from 'react';
 
@@ -16,27 +16,16 @@ function Map({ location, propertiesLocation }) {
         googleMapsApiKey: "AIzaSyDUeQXCyJDlhOtCB8JwWAk8zCxpjk6k-jo"
     })
 
-    console.log(propertiesLocation)
+
 
     const [map, setMap] = React.useState(null)
-    // const [propertiesLocation, setPropertiesLocation] = useState[(
-    //     propertiesService
-    //         .getLocationProperties(location)
-    //         .then(({ data }) => {
 
-    //             console.log(data)
-
-    //         })
-    //         .catch(err => console.log(err))
-    //     // console.log("📍 Coordinates: ", { lat, lng });
-    // )]
-
-    const MarkeronLoad = (marker) => {
-        console.log("marker: ", marker);
+    const MarkeronLoad = (MarkerF) => {
+        console.log("marker: ", MarkerF);
     };
 
     const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(location);
+        const bounds = new window.google.maps.LatLngBounds(location, { lat: 0, lng: 0 });
         const zoom = 8
         map.fitBounds(bounds);
         map.setZoom(zoom)
@@ -51,13 +40,12 @@ function Map({ location, propertiesLocation }) {
         setMap(null)
     }, [])
 
-    console.log('----------------------------', propertiesLocation)
+
 
     return isLoaded && (
         <GoogleMap
             mapContainerStyle={containerStyle}
             location={location}
-            options={OPTIONS}
             onLoad={onLoad}
             onUnmount={onUnmount}
             center={location}
@@ -65,8 +53,10 @@ function Map({ location, propertiesLocation }) {
             {propertiesLocation && propertiesLocation.map((elm) => {
                 const [lat, lng] = elm.location.coordinates
 
-                return (<MarkerF position={{ lat, lng }} />)
+                return (<MarkerF position={{ lat, lng }}
+                />)
             })}
+
         </GoogleMap>
     )
 }

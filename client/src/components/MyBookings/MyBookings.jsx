@@ -9,12 +9,12 @@ const MyBookings = ({ bookings }) => {
         {bookings && bookings.map(elm => {
           return (
             <Col xs={12} md={6} lg={4} key={elm._id} className='mb-4' >
-              <p>holaa</p>
+
               {/* <p>esta es tu reserva : {elm._id}</p> */}
               <p>{elm.bookedProperty.name}</p>
               <p>{elm.startDate}</p>
               <p>{elm.endDate}</p>
-              <p>{elm.bookedProperty.name}</p>
+
             </Col>
           )
         })}
