@@ -1,11 +1,20 @@
 const router = require("express").Router()
 const Property = require('../models/Property.model')
 const Booking = require('../models/Booking.model')
-
+const { isAuthenticated } = require('../middleware/jwt.middleware')
 router.get("/getAllProperties", (req, res) => {
 
   Property
     .find()
+    .select({ name: 1, image: 1, capacity: 1, price: 1 })
+    .then(response => res.json(response))
+    .catch(err => next(err))
+})
+
+router.get('/hotels', (req, res, next) => {
+
+  Property
+    .find({ category: "Hotel" })
     .select({ name: 1, image: 1, capacity: 1, price: 1 })
     .then(response => res.json(response))
     .catch(err => next(err))
@@ -45,7 +54,10 @@ router.get("/getOneProperty/:property_id", (req, res, next) => {
     .catch(err => next(err))
 })
 
-router.post("/saveProperty", (req, res, next) => {
+router.post("/saveProperty", isAuthenticated, (req, res, next) => {
+  const { _id } = req.payload
+
+  console.log('----------req.payload---------', req.payload)
 
   const { name,
     capacity,
@@ -63,7 +75,7 @@ router.post("/saveProperty", (req, res, next) => {
   }
 
   Property
-    .create({ name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } })
+    .create({ createdBy: _id, name, capacity, location, image, description, city, price, category, extras: { pool, barbaque, terrace, wifi, airconditioning } })
     .then(response => res.json(response))
     .catch(err => next(err))
 

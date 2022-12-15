@@ -12,6 +12,7 @@ import LocationPage from "../pages/LocationSearchPage/LocationSearchPage";
 import PropertyBookingPage from "../pages/PropertyBookingPage/PropertyBookingPage";
 import MyProfilePage from "../pages/MyProfilePage/MyProfilePage";
 import FilteredPropertiesPage from "../pages/FilteredPropertiesPage/FilteredPropertiesPage";
+import HotelsListPage from "../pages/HotelsListPage/HotelsListPage";
 
 
 const AppRoutes = () => {
@@ -23,8 +24,7 @@ const AppRoutes = () => {
             <Route path="/properties/list" element={<FilteredPropertiesPage />} />
             <Route path="/detalles/:property_id" element={<PropertyDetailsPage />} />
             <Route path="/edit/:property_id" element={<EditPropertyPage />} />
-            <Route path="/hotels" element={<p>hoteles</p>} />
-            <Route path="/details/:hotels_id" element={<p>detalles hotel</p>} />
+            <Route path="/hotels" element={<HotelsListPage />} />
             <Route path="/register" element={<SignupPage />} />
             <Route path="/login" element={<LogInPage />} />
             <Route path="/map" element={<Map />} />
