@@ -2,6 +2,7 @@ import Map2 from "../../components/Map/Map2";
 import PlacesAutocomplete from "../../components/SeachBar/SearchBar";
 import { Container } from "react-bootstrap";
 import { useState } from "react";
+import './LocationSearchPage.css'
 
 const LocationPage = () => {
 
@@ -13,14 +14,18 @@ const LocationPage = () => {
     console.log(location)
 
     return (
-        <Container>
-            <>
+        <Container className="mapa">
+            <br />
+            <div className="search">
                 <PlacesAutocomplete setLocation={setLocation} setPropertiesLocation={setPropertiesLocation} />
-                <br />
-                <Map2 location={location} propertiesLocation={propertiesLocation} />
-                <br />
-            </>
-
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Map2 location={location} propertiesLocation={propertiesLocation} />
+            <br />
         </Container >
     )
 }

@@ -30,7 +30,7 @@ const CheckoutForm = ({ amount }) => {
     setLoading(true);
 
     if (!error) {
-      // console.log(paymentMethod)
+      console.log(paymentMethod)
       const { id } = paymentMethod;
       try {
         const { data } = await axios.post(

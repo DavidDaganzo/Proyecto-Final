@@ -40,7 +40,7 @@ const Navigation = () => {
                             <Nav.Link as="div">Perfil</Nav.Link>
                         </Link>
                         <Link to="/maps">
-                            <Nav.Link as="div">Map</Nav.Link>
+                            <Nav.Link as="div">Mapa</Nav.Link>
                         </Link>
                     </Nav>
                     <Form className="d-flex me-5">

@@ -2,11 +2,13 @@ import React from 'react'
 import { GoogleMap, useJsApiLoader, MarkerF, InfoWindow } from '@react-google-maps/api';
 import propertiesService from "../../services/Properties.service"
 import { useState } from 'react';
+import { Container } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
 const containerStyle = {
     width: '100%',
     height: '400px'
+
 };
 
 // recibes locaqqtion por props
@@ -45,8 +47,8 @@ function Map({ location, propertiesLocation }) {
         navigate(`/detalles/${id}`)
     }
 
-    console.log(propertiesLocation)
     return isLoaded && (
+
         <GoogleMap
             mapContainerStyle={containerStyle}
             location={location}
@@ -61,7 +63,9 @@ function Map({ location, propertiesLocation }) {
                 />)
             })}
 
+
         </GoogleMap>
+
     )
 }
 

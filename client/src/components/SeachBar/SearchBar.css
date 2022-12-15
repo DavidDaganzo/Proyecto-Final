@@ -1,6 +1,7 @@
 .SeachBar {
   border: none;
   outline: none;
+  transition: all .5s ease-in-out;
 }
 
 .SeachBarDiv {
