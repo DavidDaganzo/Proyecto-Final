@@ -1,4 +1,3 @@
-
 import "./Header.css";
 import { DateRange } from "react-date-range";
 import { useState } from "react";
@@ -6,10 +5,16 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { format } from "date-fns";
 import PlacesAutocomplete from "../SeachBar/SearchBar";
+import { useNavigate } from "react-router-dom";
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-function Header(
+function Header() {
 
-) {
+    const navigate = useNavigate()
+
+    const [placeName, setplaceName] = useState();
+
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -19,19 +24,21 @@ function Header(
         }
     ]);
 
-
     const [openOptions, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
         capacity: 1,
 
     });
+
     const handleOption = (name, operation) => {
         setOptions((prev) => {
             return {
                 ...prev,
                 [name]: operation === "i" ? options[name] + 1 : options[name] - 1
             };
+
         });
+        console.log('--------------console.log(options)---------', options.capacity)
     };
 
     return (
@@ -39,12 +46,7 @@ function Header(
 
             <div className="headerSearch">
                 <div className="headerSearchItem">
-                    <PlacesAutocomplete />
-                    {/* <input
-                                    type="text"
-                                    placeholder="wher are you going?"
-                                    className="headerSearchInput"
-                                /> */}
+                    <PlacesAutocomplete setplaceName={setplaceName} />
                 </div>
                 <div className="headerSearchItem">
 
@@ -97,9 +99,13 @@ function Header(
                         </div>
                     )}
                 </div>
-                <div className="headerSearchItem">
+
+                <Link to={`/properties/list?city=${placeName}&capacity=${options.capacity}&from=${date[0].startDate.getTime()}&to=${date[0].endDate.getTime()}`}>
+                    <Button className=" headerBtn btn">Buscar</Button>
+                </Link>
+                {/* <div className="headerSearchItem">
                     <button className="headerBtn">Search</button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

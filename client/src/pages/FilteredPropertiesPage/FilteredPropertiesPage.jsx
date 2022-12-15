@@ -3,18 +3,21 @@ import PropertiesList from "../../components/PropertiesList/PropertiesList"
 import Loader from "../../components/Loader/Loader"
 import propertiesService from "../../services/Properties.service"
 import { Container, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 
-const PropertiesListPage = () => {
+const FilteredPropertiesPage = () => {
 
   const [properties, setProperties] = useState()
-
-
+  const [query, setQuery] = useSearchParams()
+  const city = query.get('city')
+  const capacity = query.get('capacity')
+  const from = query.get('from')
+  const to = query.get('to')
 
   const loadProperties = () => {
     propertiesService
-      .getProperties()
+      .getFilteredProperties(city, capacity, from, to)
       .then(({ data }) => setProperties(data))
       .catch(err => console.log(err))
   }
@@ -22,6 +25,8 @@ const PropertiesListPage = () => {
   useEffect(() => {
     loadProperties()
   }, [])
+
+  console.log(properties)
 
   return (
 
@@ -42,4 +47,4 @@ const PropertiesListPage = () => {
   )
 }
 
-export default PropertiesListPage
+export default FilteredPropertiesPage

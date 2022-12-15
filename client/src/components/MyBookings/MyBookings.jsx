@@ -14,6 +14,7 @@ const MyBookings = ({ bookings }) => {
                 <Card.Title className="text-center">{elm.bookedProperty.name}</Card.Title>
                 <hr />
                 <p>Id de la reserva: {elm._id}</p>
+                <p>Precio de la reserva: {elm.bookingAmount}€</p>
                 <p>Fecha de entrada: {elm.startDate.slice(0, -14)}</p>
                 <p>Fecha de salida: {elm.endDate.slice(0, -14)}</p>
                 <MyCarousel arrayOfImage={elm.bookedProperty.image} />

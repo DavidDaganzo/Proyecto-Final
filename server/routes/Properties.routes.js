@@ -1,13 +1,14 @@
 const router = require("express").Router()
 const Property = require('../models/Property.model')
+const Booking = require('../models/Booking.model')
 
 router.get("/getAllProperties", (req, res) => {
 
   Property
     .find()
     .select({ name: 1, image: 1, capacity: 1, price: 1 })
-    .then(response => setTimeout(() => res.json(response), 1000))
-    .catch(err => res.status(500).json(err))
+    .then(response => res.json(response))
+    .catch(err => next(err))
 })
 
 router.get("/getLocationProperties", (req, res) => {
@@ -29,8 +30,8 @@ router.get("/getLocationProperties", (req, res) => {
         }
       }
     )
-    .then(response => setTimeout(() => res.json(response), 1000))
-    .catch(err => res.status(500).json(err))
+    .then(response => res.json(response))
+    .catch(err => next(err))
 })
 
 
@@ -106,5 +107,61 @@ router.post('/delete/:property_id/', (req, res) => {
     .catch(err => console.log(err))
 
 })
+
+
+router.get("/filtered/list", (req, res, next) => {
+
+  const { city, capacity, from, to } = req.query
+
+  const arr = [{ city }, { capacity: { $gte: capacity } }]
+
+  console.log(arr)
+
+  const newQuery = arr.filter(elm => {
+    return Object.values(elm)[0] !== 'undefined'
+  })
+
+  console.log(newQuery)
+
+
+  Property
+    .find({ $and: newQuery })
+    .select({ name: 1, image: 1, capacity: 1, price: 1 })
+    .then(properties => {
+      const bookingsPerProperty = properties.map(elm => Booking.find({ bookedProperty: elm._id }))
+      Promise
+        .all(bookingsPerProperty)
+        .then(bookings => {
+
+          const extendedProperties = properties.map((prop, idx) => {
+            return { ...prop._doc, bookings: bookings[idx] }
+          })
+
+          const result = extendedProperties.filter(elm => {
+
+            if (elm.bookings.length === 0) {
+              return true
+            }
+
+            const isAvailable = elm.bookings.every(eachBooking => {
+
+              const bookingFrom = eachBooking.startDate.getTime()
+              const bookingTo = eachBooking.endDate.getTime()
+
+              return ((from < bookingFrom && to < bookingFrom) || from > bookingTo)
+            })
+
+            return isAvailable
+          })
+
+          res.json(result)
+        })
+    })
+
+    .catch(err => next(err))
+
+})
+
+
 
 module.exports = router

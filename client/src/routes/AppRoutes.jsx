@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import LocationPage from "../pages/LocationSearchPage/LocationSearchPage";
 import PropertyBookingPage from "../pages/PropertyBookingPage/PropertyBookingPage";
 import MyProfilePage from "../pages/MyProfilePage/MyProfilePage";
+import FilteredPropertiesPage from "../pages/FilteredPropertiesPage/FilteredPropertiesPage";
 
 
 const AppRoutes = () => {
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             {/* <Route path="/create-propety" element={<NewPropertyPage />} /> */}
             <Route path="/properties" element={<PropertiesListPage />} />
+            <Route path="/properties/list" element={<FilteredPropertiesPage />} />
             <Route path="/detalles/:property_id" element={<PropertyDetailsPage />} />
             <Route path="/edit/:property_id" element={<EditPropertyPage />} />
             <Route path="/hotels" element={<p>hoteles</p>} />

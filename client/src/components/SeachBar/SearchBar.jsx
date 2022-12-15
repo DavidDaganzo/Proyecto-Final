@@ -5,13 +5,11 @@ import propertiesService from "../../services/Properties.service";
 import { useNavigate } from 'react-router-dom'
 import { Next } from "react-bootstrap/esm/PageItem";
 
-// recibes por props setLocation
-const PlacesAutocomplete = ({ setLocation, setPropertiesLocation }) => {
+
+const PlacesAutocomplete = ({ setLocation, setPropertiesLocation, setplaceName }) => {
   const { ready, value,
     suggestions: { status, data }, setValue, clearSuggestions, } = usePlacesAutocomplete({
-      requestOptions: {
-        /* Define search scope here */
-      },
+      requestOptions: {},
       debounce: 300,
     });
   const ref = useOnclickOutside(() => {
@@ -26,10 +24,12 @@ const PlacesAutocomplete = ({ setLocation, setPropertiesLocation }) => {
 
   const navigate = useNavigate()
   const handleSelect =
-    ({ description }) =>
+    ({ description, structured_formatting }) =>
       () => {
         // When user selects a place, we can replace the keyword without request data from API
         // by setting the second parameter to "false"
+
+        setplaceName && setplaceName(structured_formatting.main_text)
         setValue(description, false);
         clearSuggestions();
 
@@ -38,11 +38,7 @@ const PlacesAutocomplete = ({ setLocation, setPropertiesLocation }) => {
           .then((results) => {
             const { lat, lng } = getLatLng(results[0]);
             const location = { lat, lng }
-            console.log(location)
             setLocation(location)
-
-
-            console.log(location)
 
             propertiesService
               .getLocationProperties(location)
@@ -50,7 +46,6 @@ const PlacesAutocomplete = ({ setLocation, setPropertiesLocation }) => {
                 setPropertiesLocation(data)
               })
               .catch(err => console.log(err))
-            console.log("📍 Coordinates: ", { lat, lng });
           });
       };
 
@@ -67,6 +62,7 @@ const PlacesAutocomplete = ({ setLocation, setPropertiesLocation }) => {
         </li>
       );
     });
+
 
   return (
     <div ref={ref} className='SeachBarDiv'>

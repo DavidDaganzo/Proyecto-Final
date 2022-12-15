@@ -35,6 +35,10 @@ class PropertiesService {
         return this.api.post(`/delete/${property_id}`)
     }
 
+    getFilteredProperties(city, capacity, from, to) {
+        return this.api.get(`/filtered/list?city=${city}&capacity=${capacity}&from=${from}&to=${to}`)
+    }
+
 }
 
 const propertiesService = new PropertiesService()
