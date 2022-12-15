@@ -7,11 +7,24 @@ class PropertiesService {
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/properties`
         })
+        this.api.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
 
     getProperties() {
         return this.api.get('/getAllProperties')
+    }
+    getHotels() {
+        return this.api.get('/hotels')
     }
 
     getLocationProperties(location) {

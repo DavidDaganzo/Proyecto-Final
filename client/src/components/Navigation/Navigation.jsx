@@ -21,20 +21,15 @@ const Navigation = () => {
                 </Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
-
+                    <Nav className="me-auto my-2 my-lg-0">
                         <Link to="/hotels">
                             <Nav.Link as='div'>Hoteles</Nav.Link>
                         </Link>
                         <Link to="/properties">
-                            <Nav.Link as="div">Apartamentos</Nav.Link>
+                            <Nav.Link as="div">Alojamientos</Nav.Link>
                         </Link>
                         <Link to="/create-propety">
-                            <Nav.Link as="div">Crear nuevo alojamiento</Nav.Link>
+                            {user?.role === "ADMIN" && <Nav.Link as="div">Crear nuevo alojamiento</Nav.Link>}
                         </Link>
                         <Link to="/profile">
                             <Nav.Link as="div">Perfil</Nav.Link>
@@ -42,27 +37,29 @@ const Navigation = () => {
                         <Link to="/maps">
                             <Nav.Link as="div">Mapa</Nav.Link>
                         </Link>
+
+
+                        <Form className="d-flex me-5">
+                            <NavDropdown title="Mi cuenta" id="navbarScrollingDropdown">
+
+                                <Link to="/login">
+                                    <NavDropdown.Item as="div">Iniciar sesión</NavDropdown.Item>
+                                </Link>
+
+                                <Link to="/">
+                                    <NavDropdown.Item as="div">
+                                        {user && <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>}
+                                    </NavDropdown.Item>
+                                </Link>
+
+                                <NavDropdown.Divider />
+                                <Link to="/register">
+                                    <NavDropdown.Item as="div">Registrarse</NavDropdown.Item>
+                                </Link>
+
+                            </NavDropdown>
+                        </Form>
                     </Nav>
-                    <Form className="d-flex me-5">
-                        <NavDropdown title="Mi cuenta" id="navbarScrollingDropdown">
-
-                            <Link to="/login">
-                                <NavDropdown.Item as="div">Iniciar sesión</NavDropdown.Item>
-                            </Link>
-
-                            <Link to="/">
-                                <NavDropdown.Item as="div">
-                                    {user && <Nav.Link as="div" onClick={logoutUser}>Cerrar sesión</Nav.Link>}
-                                </NavDropdown.Item>
-                            </Link>
-
-                            <NavDropdown.Divider />
-                            <Link to="/register">
-                                <NavDropdown.Item as="div">Registrarse</NavDropdown.Item>
-                            </Link>
-
-                        </NavDropdown>
-                    </Form>
                     <Nav.Link as="div">¡Hola, {!user ? 'invitad@' : user.username}!</Nav.Link>
                 </Navbar.Collapse>
             </Container>

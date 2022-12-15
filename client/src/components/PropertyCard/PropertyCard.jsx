@@ -7,7 +7,7 @@ import MyCarousel from './MyCarousel';
 function PropertyCard({ name, price, _id, image }) {
   return (
 
-    <Card style={{ width: '18rem' }}>
+    <Card className="card">
       <MyCarousel arrayOfImage={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>

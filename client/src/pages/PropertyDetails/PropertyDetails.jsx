@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 import propertiesService from "../../services/Properties.service"
 import MyCarousel from '../../components/PropertyCard/MyCarousel';
 import Map from "../../components/Map/Map";
+import { AuthContext } from '../../context/auth.context'
 
 
 const PropertyDetailsPage = () => {
+    const { user, logoutUser } = useContext(AuthContext)
 
     const [property, setProperty] = useState()
     const { property_id } = useParams()
@@ -86,7 +88,7 @@ const PropertyDetailsPage = () => {
                                     <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Volver a la Lista</Button>
                                 </Link>
                                 <Link to={`/edit/${property_id}`}>
-                                    <Button variant="outline-warning" className='me-3 mb-4 mt-2'>Editar</Button>
+                                    {user?._id === property.createdBy && < Button variant="outline-warning" className='me-3 mb-4 mt-2'>Editar</Button>}
                                 </Link>
                                 <Link to="/properties">
                                     <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>
