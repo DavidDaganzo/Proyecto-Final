@@ -37,7 +37,7 @@ const MyProfilePage = () => {
             <h3>Estas son tus reservas:</h3>
             <br />
           </div>
-          <MyBookings bookings={bookings} />
+          <MyBookings bookings={bookings} loadBookings={loadBookings} />
         </Col>
       </Row>
     </Container>

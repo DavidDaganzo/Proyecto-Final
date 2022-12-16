@@ -1,6 +1,18 @@
-import { Container, Col, Row, Card } from "react-bootstrap"
+import { Container, Col, Row, Card, Button } from "react-bootstrap"
 import MyCarousel from "../PropertyCard/MyCarousel"
-const MyBookings = ({ bookings }) => {
+import bookingService from "../../services/Booking.service"
+import { Link, useParams } from "react-router-dom"
+import { useState } from "react"
+
+const MyBookings = ({ bookings, loadBookings }) => {
+
+
+  const deleteBooking = (booking_id) => {
+    bookingService
+      .delete(booking_id)
+      .then(({ data }) => loadBookings())
+      .catch(err => console.error(err))
+  }
 
   console.log(bookings)
   return (
@@ -18,7 +30,12 @@ const MyBookings = ({ bookings }) => {
                 <p>Fecha de entrada: {elm.startDate.slice(0, -14)}</p>
                 <p>Fecha de salida: {elm.endDate.slice(0, -14)}</p>
                 <MyCarousel arrayOfImage={elm.bookedProperty.image} />
+
+                <Link to="/profile">
+                  <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={() => deleteBooking(elm._id)}>Cancelar Reserva</Button>
+                </Link>
               </Card>
+
             </Col>
           )
         })}
