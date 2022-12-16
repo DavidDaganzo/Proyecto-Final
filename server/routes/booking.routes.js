@@ -48,4 +48,15 @@ router.get('/my-bookings/:user_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
+router.post('/delete/:booking_id', (req, res) => {
+
+    const { booking_id } = req.params
+
+    Booking
+        .findByIdAndDelete(booking_id)
+        .then(response => res.json(response))
+        .catch(err => console.log(err))
+
+})
+
 module.exports = router

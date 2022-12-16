@@ -28,8 +28,8 @@ function Map({ location, propertiesLocation }) {
     };
 
     const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(location, { lat: 0, lng: 0 });
-        const zoom = 8
+        const bounds = new window.google.maps.LatLngBounds({ lat: 40.445, lng: -3.65959 }, { lat: 0, lng: 0 });
+        const zoom = 10
         map.fitBounds(bounds);
         map.setZoom(zoom)
         setMap(map)
