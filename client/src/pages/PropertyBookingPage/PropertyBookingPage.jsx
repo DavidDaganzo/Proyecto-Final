@@ -70,38 +70,42 @@ const PropertyBookingPage = () => {
     <Container >
       {
         !property ? <Spinner /> :
-          <Row>
-            <Col md={{ span: 5 }}>
-              <BookingCalendar state={state} setState={setState} />
-            </Col>
+          <>
+            <h1 className='text-center'>{property.name}</h1>
+            <hr />
+            <Row>
+              <Col md={{ span: 5 }}>
+
+                <BookingCalendar state={state} setState={setState} />
+              </Col>
 
 
-            <Col md={{ span: 5, offset: 1 }}>
-              <h1>{property.name} </h1>
-              <hr />
-              <p>Capacidad: {property.capacity} personas</p>
-              <p>Categoría: {property.category}</p>
-              <p>Precio por noche: {property.price}€ </p>
-              <p>Duracion de la estancia: {Totaldays} noches </p>
-              <p> Ciudad: {property.city}</p>
-              <p>Extras:</p>
-              <ul>
-                <li>Piscina: {property.extras.pool ? '✅' : '❌'}</li>
-                <li>Barbacoa: {property.extras.barbaque ? '✅' : '❌'}</li>
-                <li>Terraza: {property.extras.terrace ? '✅' : '❌'}</li>
-                <li>Wifi: {property.extras.wifi ? '✅' : '❌'}</li>
-                <li>Aire acondicionado: {property.extras.airconditioning ? '✅' : '❌'}</li>
-              </ul>
-              <hr />
-              <h3>Importe total = {property.price * Totaldays} €</h3>
+              <Col md={{ span: 5, offset: 1 }}>
 
-              <Payment amount={property.price * Totaldays} />
-              <Link to="/properties">
-                <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={handleFormSubmit}>Reservar</Button>
-              </Link>
-            </Col>
+                <p>Capacidad: {property.capacity} personas</p>
+                <p>Categoría: {property.category}</p>
+                <p>Precio por noche: {property.price}€ </p>
+                <p>Duracion de la estancia: {Totaldays} noches </p>
+                <p> Ciudad: {property.city}</p>
+                <p>Extras:</p>
+                <ul>
+                  <li>Piscina: {property.extras.pool ? '✅' : '❌'}</li>
+                  <li>Barbacoa: {property.extras.barbaque ? '✅' : '❌'}</li>
+                  <li>Terraza: {property.extras.terrace ? '✅' : '❌'}</li>
+                  <li>Wifi: {property.extras.wifi ? '✅' : '❌'}</li>
+                  <li>Aire acondicionado: {property.extras.airconditioning ? '✅' : '❌'}</li>
+                </ul>
+                <hr />
+                <h3>Importe total = {property.price * Totaldays} €</h3>
 
-          </Row>
+                {/* <Payment amount={property.price * Totaldays} /> */}
+                <Link to="/properties">
+                  <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={handleFormSubmit}>Reservar</Button>
+                </Link>
+              </Col>
+
+            </Row>
+          </>
       }
     </Container >
   )

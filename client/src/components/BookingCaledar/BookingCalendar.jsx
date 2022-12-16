@@ -53,6 +53,7 @@ const BookingCalendar = ({ state, setState }) => {
     console.log('SI SI YA VA', bookedDates)
     return (
         <DateRangePicker
+            className="DateRangePicker"
             onChange={item => setState([item.selection])}
             showSelectionPreview={true}
             editableDateInputs={true}

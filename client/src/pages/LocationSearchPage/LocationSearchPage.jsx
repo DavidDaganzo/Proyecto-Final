@@ -16,6 +16,10 @@ const LocationPage = () => {
     return (
         <Container className="mapa">
             <br />
+            <h1>Busqueda por localización</h1>
+            <hr />
+            <p>Elegir una buena localización es una decisión muy importante, por ello hemos implementado un nuevo motor de busqueda por localización que le ayudará a encontrar la ubicación ideal para su estancia.</p>
+            <h4>Selecione una ciudad:</h4>
             <div className="search">
                 <PlacesAutocomplete setLocation={setLocation} setPropertiesLocation={setPropertiesLocation} />
             </div>
