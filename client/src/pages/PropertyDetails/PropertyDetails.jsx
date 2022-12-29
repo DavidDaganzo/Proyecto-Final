@@ -93,7 +93,6 @@ const PropertyDetailsPage = () => {
                                 <Link to="/properties">
                                     {(user?._id === property.createdBy || user?.role === "ADMIN") && <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>}
                                 </Link>
-
                             </Col>
 
 
