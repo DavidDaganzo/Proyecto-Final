@@ -88,10 +88,10 @@ const PropertyDetailsPage = () => {
                                     <Button as="div" variant="outline-dark" className='me-3 mb-4 mt-2'>Volver a la Lista</Button>
                                 </Link>
                                 <Link to={`/edit/${property_id}`}>
-                                    {user?._id === property.createdBy && < Button variant="outline-warning" className='me-3 mb-4 mt-2'>Editar</Button>}
+                                    {(user?._id === property.createdBy || user?.role === "ADMIN") && < Button variant="outline-warning" className='me-3 mb-4 mt-2'>Editar</Button>}
                                 </Link>
                                 <Link to="/properties">
-                                    <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>
+                                    {(user?._id === property.createdBy || user?.role === "ADMIN") && <Button variant="outline-danger" className='me-3 mb-4 mt-2' onClick={deleteProperty}>Eliminar</Button>}
                                 </Link>
 
                             </Col>
